@@ -110,6 +110,7 @@ def wateredToday(plantName):
 	temp = dt.datetime.now()
 	today = temp.strftime('%Y-%m-%d')
 	conn.execute('UPDATE plants SET lastWatered = ? WHERE name = ?', (today, plantName))
+	conn.execute('UPDATE plants SET remaining = ? WHERE name = ?', (plant['dryOut'], plantName))
 	conn.commit()
 	conn.close()
 	#flash('"{}" was watered today!'.format(plant['name']))
