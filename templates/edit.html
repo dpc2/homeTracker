@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h3>Edit {{ plant['name'] }}</h3>
+	
+        <form action="{{ url_for('wateredToday', plantName=plant['name']) }}" method="POST", class="edit">
+                <input type="submit" value="Watered today"
+                        onclick="return confirm('Watered today?')">
+	<br>
+	<form method="post", class="edit">
+		<br>
+		<label for="name">Name: </label>
+		<input type="text" name="name"
+			value="{{ request.form['name'] or plant['name'] }}"></input>
+		<br>
+
+		<br>
+		<label for="lastWatered">Last watered: </label>
+		<input type="date" name="lastWatered"
+			value="{{ request.form['lastWatered'] or plant['lastWatered'] }}"></input>
+		<br>
+
+		<br>
+		<label for="dryOut">Dry out period: </label>
+		<input type="text" name="dryOut"
+			value="{{ request.form['dryOut'] or plant['dryOut'] }}"></input>
+		<br>
+		<br>
+		<button type="submit">Submit</button>
+	</form>
+	<br>
+	<hr>
+	<form method=post enctype=multipart/form-data>
+		<input type=file name=file>
+		<input type=submit value=Upload>
+	</form>
+
+	<hr>
+	<h3>To delete this entry, click the button below</h3>
+
+	<form action="{{ url_for('delete', plantName=plant['name']) }}" method="POST", class="edit">
+		<input type="submit" value="Delete plant"
+			onclick="return confirm('Are you sure you want to delete this plant?')">
+	</form>
+
+{% endblock %}

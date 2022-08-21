@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<br>
+	<table id="plants", class="paddingBetweenCols">
+		<th><u>Plant name:</u></th>
+		<th><u>Dry out:</u></th>
+		<th><u>Days left:</u></th>
+
+		{% for plants in plants %}
+			{% if loop.index % 2 == 0 %}
+				{% set bg_color = '#9EF1AE' %}
+			{% else %}
+				{% set bg_color = '#9EF1DC' %}
+			{% endif %}		
+
+			<tr style="background-color: {{ bg_color }}">
+				<td><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
+				<td> {{ plants['dryOut'] }}</td>
+				<td> {{ plants['remaining'] }}</td>
+				<td><a href="{{ url_for('upload', plantName=plants['name']) }}">Pics</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+	<br>
+	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+.plants {
+	padding: 10px;
+	margin: 5px;
+	background-color: #22D36A;
+}
+
+nav a {
+	color: #25FF00;
+	font-size: 2em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-decoration: none;
+	background-color: #5A67FA;
+}
+.paddingBetweenCols td {
+	padding:5px 40px 5px 40px;
+	text-align: center;
+}
+.paddingBetweenCols {
+	margin-left: 20px;
+}
+a.button {
+	text-decoration: none;
+	border: solid;
+	border-color: #0400FF;
+	margin-left: 30px;
+	color: #0400FF;
+	background: ;
+}
+body.body {
+	background-color: #CED2FC;
+}
+.logo {
+	width: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+form.edit {
+	margin-left: 20px;
+}
