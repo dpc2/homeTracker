@@ -1,4 +1,4 @@
-# Plant Tracker Flask app
+<h1>Plant Tracker Flask app</h1>
 
 This is a Flask web app that I made to help track the various watering schedules for my
 many house plants. One Python script sets up the Flask server and details the app routes
@@ -10,5 +10,7 @@ which plants are thirsty.
 <h2>Technologies/Libraries Used</h2>
 - Python
 - Flask
+- HTML
+- CSS
 - SQLite3
 - Yagmail
