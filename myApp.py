@@ -1,4 +1,5 @@
 import sqlite3
+import os.path
 import datetime as dt
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -15,6 +16,8 @@ app.add_url_rule(
 )
 ALLOWED_EXTENSIONS = {'jpg'}
 
+baseDir = os.path.dirname(os.path.abspath(__file__))
+db_dir = (baseDir + '\\database.db')
 
 def get_db_connection():
 	conn = sqlite3.connect('database.db')
@@ -74,12 +77,16 @@ def addNew():
 @app.route('/<string:plantName>/edit/', methods=('GET', 'POST'))
 def edit(plantName):
 	plant = get_plant(plantName)
+	print(plant)
 
 	if request.method == 'POST':
-		print(request.form)
 		myName = request.form['name']
 		myLastWatered = request.form['lastWatered']
 		myDryOut = request.form['dryOut']
+
+		print(myName)
+		print(myLastWatered)
+		print(myDryOut)
 
 		if not myName:
 			flash('Plant name is required!')
