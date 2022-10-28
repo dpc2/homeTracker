@@ -8,9 +8,9 @@ watered, updates a column in the database, and sends me an email (from myself) d
 which plants are thirsty.
 
 <h2>Technologies/Libraries Used</h2>
-- Python
-- Flask
-- HTML
-- CSS
-- SQLite3
-- Yagmail
+<body>- Python</body>
+<body>- Flask</body>
+<body>- HTML</body>
+<body>- CSS</body>
+<body>- SQLite3</body>
+<body>- Yagmail</body>
