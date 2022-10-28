@@ -74,12 +74,16 @@ def addNew():
 @app.route('/<string:plantName>/edit/', methods=('GET', 'POST'))
 def edit(plantName):
 	plant = get_plant(plantName)
+	print(plant)
 
 	if request.method == 'POST':
-		print(request.form)
 		myName = request.form['name']
 		myLastWatered = request.form['lastWatered']
 		myDryOut = request.form['dryOut']
+
+		print(myName)
+		print(myLastWatered)
+		print(myDryOut)
 
 		if not myName:
 			flash('Plant name is required!')
