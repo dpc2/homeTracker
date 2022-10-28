@@ -9,10 +9,10 @@ which plants are thirsty.
 
 <h2>Technologies/Libraries Used</h2>
 <ul>
-	<li>- Python</li>
-	<li>- Flask</li>
-	<li>- HTML</li>
-	<li>- CSS</li>
-	<li>- SQLite3</li>
-	<li>- Yagmail</li>
+	<li>Python</li>
+	<li>Flask</li>
+	<li>HTML</li>
+	<li>CSS</li>
+	<li>SQLite3</li>
+	<li>Yagmail</li>
 </ul>
