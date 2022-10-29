@@ -1,4 +1,5 @@
 import sqlite3
+import os.path
 import datetime as dt
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -15,6 +16,8 @@ app.add_url_rule(
 )
 ALLOWED_EXTENSIONS = {'jpg'}
 
+baseDir = os.path.dirname(os.path.abspath(__file__))
+db_dir = (baseDir + '\\database.db')
 
 def get_db_connection():
 	conn = sqlite3.connect('database.db')
