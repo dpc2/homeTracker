@@ -25,5 +25,5 @@ were watered.
 </p>
 <br>
 <p align="center">
-  <img width="200" height="300" src="/static/plantEmail.png">
+  <img width="597" height="616" src="/static/plantEmail.png">
 </p>
