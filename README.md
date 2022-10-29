@@ -19,7 +19,7 @@ were watered.
 	<li>SQLite3</li>
 	<li>Yagmail</li>
 </ul>
-
+<br>
 <p align="center">
-  <img width="400" height="200" src="/static/20221024.jpg">
+  <img width="600" height="300" src="/static/20221024.jpg">
 </p>
