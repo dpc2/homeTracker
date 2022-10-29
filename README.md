@@ -23,3 +23,7 @@ were watered.
 <p align="center">
   <img width="600" height="300" src="/static/20221024.jpg">
 </p>
+<br>
+<p align="center">
+  <img width="600" height="300" src="/static/plantEmail.png">
+</p>
