@@ -1,28 +1,47 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<br>
+	<h3 class="header3">Today's thirsty bois</h3>
 	<table id="plants", class="paddingBetweenCols">
-		<th><u>Plant name:</u></th>
+                <th><u>Plant name:</u></th>
 		<th><u>Dry out:</u></th>
-		<th><u>Days left:</u></th>
-
-		{% for plants in plants %}
+		{% for thirstyToday in thirstyToday %}
 			{% if loop.index % 2 == 0 %}
 				{% set bg_color = '#9EF1AE' %}
 			{% else %}
 				{% set bg_color = '#9EF1DC' %}
 			{% endif %}		
 
-			<tr style="background-color: {{ bg_color }}">
-				<td><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
-				<td> {{ plants['dryOut'] }}</td>
-				<td> {{ plants['remaining'] }}</td>
-				<td><a href="{{ url_for('upload', plantName=plants['name']) }}">Pics</a></td>
-			</tr>
+                        <tr style="background-color: {{ bg_color }}">
+                                <td><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
+                                <td> {{ thirstyToday['dryOut'] }}</td>
+                                <td><a href="{{ url_for('upload', plantName=thirstyToday['name']) }}">Pics</a></td>
+                        </tr>
 		{% endfor %}
 	</table>
 	<br>
+	<br>
+	<table id="plants", class="paddingBetweenCols">
+		<th><u>Plant name:</u></th>
+                <th><u>Dry out:</u></th>
+                <th><u>Days left:</u></th>
+
+                {% for plants in plants %}
+                        {% if loop.index % 2 == 0 %}
+                                {% set bg_color = '#9EF1AE' %}
+                        {% else %}
+                                {% set bg_color = '#9EF1DC' %}
+                        {% endif %}
+			
+			<tr style="background-color: {{ bg_color }}">
+                                <td><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
+                                <td> {{ plants['dryOut'] }}</td>
+                                <td> {{ plants['remaining'] }}</td>
+                                <td><a href="{{ url_for('upload', plantName=plants['name']) }}">Pics</a></td>
+                        </tr>
+                {% endfor %}
+        </table>
+
 	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
 
 {% endblock %}

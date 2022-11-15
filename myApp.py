@@ -44,9 +44,8 @@ def allowed_file(filename):
 @app.route('/')
 def index():
 	conn = get_db_connection()
-	plants = conn.execute('SELECT * FROM plants ORDER BY name').fetchall()
-	thirstyToday = conn.execute('SELECT * FROM plants WHERE remaining = 0').fetchall()
-	print(thirstyToday)
+	plants = conn.execute('SELECT * FROM plants WHERE remaining != 0 ORDER BY name').fetchall()
+	thirstyToday = conn.execute('SELECT * FROM plants WHERE remaining = 0 ORDER BY name').fetchall()
 	conn.close()
 	return render_template('index.html', thirstyToday=thirstyToday, plants=plants)
 
