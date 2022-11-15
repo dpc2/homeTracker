@@ -44,11 +44,12 @@ def allowed_file(filename):
 @app.route('/')
 def index():
 	conn = get_db_connection()
-	plants = conn.execute('SELECT * FROM plants ORDER BY name').fetchall()
+	plants = conn.execute('SELECT * FROM plants WHERE remaining != 0 ORDER BY name').fetchall()
+	thirstyToday = conn.execute('SELECT * FROM plants WHERE remaining = 0 ORDER BY name').fetchall()
 	conn.close()
-	return render_template('index.html', plants=plants)
+	return render_template('index.html', thirstyToday=thirstyToday, plants=plants)
 
- 
+
 @app.route('/addNew/', methods=('GET', 'POST'))
 def addNew():
 	if request.method == 'POST':
