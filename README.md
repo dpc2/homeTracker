@@ -15,15 +15,15 @@ home server.
 
 <h2>Technologies/Libraries Used</h2>
 <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Raspberry Pi 4</li>
 	<li>Python</li>
 	<ul>
 		<li>Flask</li>
 		<li>SQLite3</li>
 		<li>Yagmail</li>
 	</ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Raspberry Pi 4</li>
 </ul>
 
 
