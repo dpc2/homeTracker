@@ -6,7 +6,6 @@ import yagmail
 
 conn = sqlite3.connect('database.db')
 plants = conn.execute('SELECT * FROM plants').fetchall()
-#conn.close()
 
 today = dt.datetime.now()
 temp = today.strftime('%Y-%m-%d')
@@ -25,7 +24,6 @@ for item in plants:
 	if daysMod >= delta:
         	thirsty += str(item[1]) + """ bby says, "Please water me! It's been """ + str(daysMod) + " whole days!\"\n\n"
 
-	#update = conn.execute('SELECT * FROM plants WHERE name = ?', (item[1],)).fetchone()
 	conn.execute('UPDATE plants SET remaining = ? WHERE name = ?', (timeLeft, name))
 
 conn.commit()
