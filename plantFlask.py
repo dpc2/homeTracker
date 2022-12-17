@@ -5,15 +5,20 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask import (
 	Flask, render_template,
-	request, url_for, flash, redirect
+	request, url_for, flash, redirect,
+	send_from_directory
 )
 
 
 app = Flask(__name__)
+
+# Upload configurations
+UPLOAD_FOLDER = '/home/danny/code/python/venv/plantFlask/static/images/'
+ALLOWED_EXTENSIONS = {'jpg'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.add_url_rule(
 	"/<string:plantName>/upload/", endpoint="upload", build_only=True
 )
-ALLOWED_EXTENSIONS = {'jpg'}
 
 baseDir = os.path.dirname(os.path.abspath(__file__))
 db_dir = (baseDir + '\\database.db')
@@ -106,6 +111,21 @@ def edit(plantName):
 
 			conn.commit()
 			conn.close()
+			#return redirect(url_for('index'))
+
+		if 'file' not in request.files:
+			flash('No file part')
+			return redirect(request.url)
+		file = request.files['file']
+
+		if file.filename == '':
+			flash('No selected file')
+			return redirect(request.url)
+
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			#return redirect(url_for('download_file', name=filename))
 			return redirect(url_for('index'))
 	return render_template('edit.html', plant=plant)
 
@@ -135,22 +155,6 @@ def delete(plantName):
 	return redirect(url_for('index'))
 
 
-@app.route('/<string:plantName>/upload/', methods=['GET', 'POST'])
-def upload(plantName):
-	if request.method == 'POST':
-		#UPLOAD_FOLDER = getFolder(plantName):
-		UPLOAD_FOLDER = '/home/danny/scripts/venv/plantFlask/static/'
-		if 'file' not in request.files:
-			flash('No file part')
-			return redirect(request.url)
-		file = request.files['file']
-
-		if file.filename == '':
-			flash('No selected file')
-			return redirect(request.url)
-
-		if file and allowed_file(file.filename):
-			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			return redirect(url_for('upload', name=filename))
-	return redirect(url_for('upload'))
+@app.route('/uploads/<name>')
+def download_file(name):
+	return send_from_directory(app.config["UPLOAD_FOLDER"], name)

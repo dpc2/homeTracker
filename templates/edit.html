@@ -8,7 +8,7 @@
                         onclick="return confirm('Watered today?')">
 	</form>
 	<br>
-	<form method="post", class="edit">
+	<form method="post", class="edit", enctype=multipart/form-data>
 		<br>
 		<label for="name">Name: </label>
 		<input type="text" name="name"
@@ -28,14 +28,12 @@
 		<br>
 		<br>
 		<button type="submit">Submit</button>
-	</form>
-	<br>
-	<hr>
-	<form method=post enctype=multipart/form-data>
+		<br>
+		<br>
 		<input type=file name=file>
 		<input type=submit value=Upload>
 	</form>
-
+	<br>
 	<hr>
 	<h3>To delete this entry, click the button below</h3>
 
