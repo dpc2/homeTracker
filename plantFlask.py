@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 # Upload configurations
 UPLOAD_FOLDER = '/home/danny/code/python/venv/plantFlask/static/images/'
+#UPLOAD_FOLDER = '/home/danny/code...'
 ALLOWED_EXTENSIONS = {'jpg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.add_url_rule(
