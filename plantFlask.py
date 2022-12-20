@@ -13,8 +13,8 @@ from flask import (
 app = Flask(__name__)
 
 # Upload configurations
-UPLOAD_FOLDER = '/home/danny/code/python/venv/plantFlask/static/images/'
-#UPLOAD_FOLDER = '/home/danny/code...'
+#UPLOAD_FOLDER = '/home/danny/code/python/venv/plantFlask/static/images/'
+UPLOAD_FOLDER = '/home/danny/scripts/venv/plantFlask/static/images/'
 ALLOWED_EXTENSIONS = {'jpg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.add_url_rule(
