@@ -1,5 +1,5 @@
 import sqlite3
-import os.path
+import os
 import datetime as dt
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -11,6 +11,8 @@ from flask import (
 
 
 app = Flask(__name__)
+app.secret_key = os.urandom(12)
+
 
 # Upload configurations
 #UPLOAD_FOLDER = '/home/danny/code/python/venv/plantFlask/static/images/'
