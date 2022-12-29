@@ -127,7 +127,13 @@ def edit(plantName):
 
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			myDirectory = UPLOAD_FOLDER + myName.replace(' ','')
+
+			if os.path.exists(myDirectory) == False:
+				os.mkdir(myDirectory)
+				print('Created folder!')
+
+			file.save(myDirectory + '/' + filename)
 			#return redirect(url_for('download_file', name=filename))
 			return redirect(url_for('index'))
 	return render_template('edit.html', plant=plant)
@@ -158,6 +164,10 @@ def delete(plantName):
 	return redirect(url_for('index'))
 
 
-@app.route('/uploads/<name>')
-def download_file(name):
-	return send_from_directory(app.config["UPLOAD_FOLDER"], name)
+@app.route('/<name>/upload/')
+def upload(name):
+	print(UPLOAD_FOLDER + name.replace(' ',''))
+	print(app.config["UPLOAD_FOLDER"], name.replace(' ','').strip())
+	return send_from_directory(UPLOAD_FOLDER + name.replace(' ',''))
+	#return send_from_directory(app.config["UPLOAD_FOLDER"], name.replace(' ',''))
+
