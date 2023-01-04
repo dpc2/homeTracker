@@ -21,7 +21,6 @@ home server.
 
 <h2>Technologies/Libraries Used</h2>
 <ul>
-
 	<li>Python</li>
 	<ul>
 		<li>Flask</li>
