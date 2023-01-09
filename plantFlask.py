@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from os.path import dirname, join
 import datetime as dt
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -13,18 +14,14 @@ from flask import (
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
-
 # Upload configurations
-#UPLOAD_FOLDER = '/home/danny/code/python/venv/plantFlask/static/images/'
-UPLOAD_FOLDER = '/home/danny/scripts/venv/plantFlask/static/images/'
+currentDir = dirname(__file__)
+imagePath = join(currentDir, "static/images/")
 ALLOWED_EXTENSIONS = {'jpg'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.add_url_rule(
 	"/<string:plantName>/upload/", endpoint="upload", build_only=True
 )
 
-baseDir = os.path.dirname(os.path.abspath(__file__))
-db_dir = (baseDir + '\\database.db')
 
 def get_db_connection():
 	conn = sqlite3.connect('database.db')
@@ -45,7 +42,7 @@ def allowed_file(filename):
 
 
 #------------------------------------#
-#		Routes
+#			    Routes
 #------------------------------------#
 
 @app.route('/')
@@ -114,8 +111,8 @@ def edit(plantName):
 
 			conn.commit()
 			conn.close()
-			#return redirect(url_for('index'))
 
+		# Uploading daily picture
 		if 'file' not in request.files:
 			flash('No file part')
 			return redirect(request.url)
@@ -127,14 +124,13 @@ def edit(plantName):
 
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			myDirectory = UPLOAD_FOLDER + myName.replace(' ','')
+			myDirectory = imagePath + myName.replace(' ','')
 
 			if os.path.exists(myDirectory) == False:
 				os.mkdir(myDirectory)
 				print('Created folder!')
 
 			file.save(myDirectory + '/' + filename)
-			#return redirect(url_for('download_file', name=filename))
 			return redirect(url_for('index'))
 	return render_template('edit.html', plant=plant)
 
@@ -164,10 +160,10 @@ def delete(plantName):
 	return redirect(url_for('index'))
 
 
-@app.route('/<name>/upload/')
-def upload(name):
-	print(UPLOAD_FOLDER + name.replace(' ',''))
-	print(app.config["UPLOAD_FOLDER"], name.replace(' ','').strip())
-	return send_from_directory(UPLOAD_FOLDER + name.replace(' ',''))
+#@app.route('/<name>/upload/')
+#def upload(name):
+	#print(UPLOAD_FOLDER + name.replace(' ',''))
+	#print(app.config["UPLOAD_FOLDER"], name.replace(' ','').strip())
+	#return send_from_directory(UPLOAD_FOLDER + name.replace(' ',''))
 	#return send_from_directory(app.config["UPLOAD_FOLDER"], name.replace(' ',''))
 
