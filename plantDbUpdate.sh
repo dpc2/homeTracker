@@ -8,6 +8,6 @@ if grep -q "new file:" $1; then
         git commit -m "Db + picture update"
         git push
 else
-	echo "No updates"
+	:
 fi
 
