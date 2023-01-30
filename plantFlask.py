@@ -160,6 +160,26 @@ def delete(plantName):
 	return redirect(url_for('index'))
 
 
+@app.route('/<string:plantName>/viewPics/', methods=('GET',))
+def viewPics(plantName):
+	plant = get_plant(plantName)
+
+	plantName = plantName.replace(' ','')
+	print(plantName)
+	fullPath = imagePath + plantName
+
+	imgList = os.listdir(fullPath)
+	print(imgList)
+	imgList = ['images/' + plantName + '/' + i for i in imgList]
+	print(imgList)
+
+	#print(app.config["UPLOAD_FOLDER"], name.replace(' ','').strip())
+	#return send_from_directory(UPLOAD_FOLDER + name.replace(' ',''))
+	#return send_from_directory(fullPath, '20230106_205716.jpg')
+
+	return render_template('viewPics.html', plant=plant, imageList = imgList)
+
+
 #@app.route('/<name>/upload/')
 #def upload(name):
 	#print(UPLOAD_FOLDER + name.replace(' ',''))

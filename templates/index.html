@@ -37,7 +37,7 @@
                                 <td><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
                                 <td> {{ plants['dryOut'] }}</td>
                                 <td> {{ plants['remaining'] }}</td>
-                                <td><a href="{{ url_for('upload', plantName=plants['name']) }}">Pics</a></td>
+                                <td><a href="{{ url_for('viewPics', plantName=plants['name']) }}">Pics</a></td>
                         </tr>
                 {% endfor %}
         </table>

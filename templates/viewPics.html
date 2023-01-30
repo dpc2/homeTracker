@@ -1,0 +1,12 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+<h1>{{ plant['name'] }} Picture Gallery</h1>
+
+{% for i in imageList %}
+<img src = "{{ url_for('static', filename=i)}}" class = "viewPics">
+{% endfor %}
+
+
+{% endblock %}
