@@ -2,8 +2,9 @@
 
 {% block content %}
 
-<h1>{{ plant['name'] }} Picture Gallery</h1>
-
+<h1><u>{{ plant['name'] }} picture gallery</u></h1>
+<br>
+<br>
 {% for i in imageList %}
 <img src = "{{ url_for('static', filename=i)}}" class = "viewPics">
 {% endfor %}
