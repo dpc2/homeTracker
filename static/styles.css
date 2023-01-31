@@ -4,6 +4,7 @@ img.resize {
 }
 
 div.polaroid {
+
 	margin-bottom: 25px;
 	display: grid;
   	grid-template-columns: auto auto auto auto auto auto;
@@ -54,7 +55,7 @@ a.button {
 	border-color: #0400FF;
 	margin-left: 30px;
 	color: #0400FF;
-	background: ;
+
 }
 body.body {
 	background-color: #CED2FC;
