@@ -1,5 +1,23 @@
+img.resize {
+	width: 500px;
+	height: auto;
+}
+
+div.polaroid {
+	margin-bottom: 25px;
+	display: grid;
+  	grid-template-columns: auto auto auto auto auto auto;
+  	align-items: center;
+}
+
+div.container { 
+	text-align: center;
+	padding: 10px 20px;
+}
+
 .viewPics {
 	max-width: 20%;
+	display: inline;
 }
 
 .header3 {

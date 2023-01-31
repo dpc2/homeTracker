@@ -1,5 +1,6 @@
 import sqlite3
 import os
+import re
 from os.path import dirname, join
 import datetime as dt
 from datetime import datetime
@@ -168,16 +169,28 @@ def viewPics(plantName):
 	print(plantName)
 	fullPath = imagePath + plantName
 
-	imgList = os.listdir(fullPath)
+	imgList = sorted(os.listdir(fullPath))
 	print(imgList)
 	imgList = ['images/' + plantName + '/' + i for i in imgList]
 	print(imgList)
 
-	#print(app.config["UPLOAD_FOLDER"], name.replace(' ','').strip())
-	#return send_from_directory(UPLOAD_FOLDER + name.replace(' ',''))
-	#return send_from_directory(fullPath, '20230106_205716.jpg')
+	string = ''.join(imgList)
+	myDates = re.findall('[2][0][2-9][0-9][0-9][0-9][0-9][0-9]', string)
+	print(myDates)
 
-	return render_template('viewPics.html', plant=plant, imageList = imgList)
+	def dateShuffle(datesIn):
+		for i, date in enumerate(datesIn):
+			myYear = str(date[0:4])
+			myMonth = str(date[4:6])
+			myDay = str(date[6:])
+			datesIn[i] = myMonth + '/' + myDay + '/' + myYear
+			print(date)
+		return datesIn
+
+	dateList = dateShuffle(myDates)	
+
+	return render_template('viewPics.html', plant=plant, imageList = imgList,
+							enumerate = enumerate, dateList = dateList)
 
 
 #@app.route('/<name>/upload/')
