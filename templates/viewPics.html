@@ -5,9 +5,14 @@
 <h1><u>{{ plant['name'] }} picture gallery</u></h1>
 <br>
 <br>
-{% for i in imageList %}
-<img src = "{{ url_for('static', filename=i)}}" class = "viewPics">
-{% endfor %}
 
+<div class="polaroid">
+    {% for i,image in enumerate(imageList) %}
+    <img class="resize" src = "{{ url_for('static', filename=image)}}" >
+    <div class="container">
+    <p>{{ dateList[i] }}</p>
+    </div>   
+    {% endfor %}
+</div>
 
 {% endblock %}
