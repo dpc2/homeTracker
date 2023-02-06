@@ -47,7 +47,8 @@ nav a {
 	text-align: center;
 }
 .paddingBetweenCols {
-	margin-left: 20px;
+	margin-left: 0px;
+	marign-right: 0px;
 }
 a.button {
 	text-decoration: none;
