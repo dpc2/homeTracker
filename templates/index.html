@@ -15,7 +15,6 @@
                         <tr style="background-color: {{ bg_color }}">
                                 <td><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
                                 <td> {{ thirstyToday['dryOut'] }}</td>
-                                <td><a href="{{ url_for('upload', plantName=thirstyToday['name']) }}">Pics</a></td>
                         </tr>
 		{% endfor %}
 	</table>
