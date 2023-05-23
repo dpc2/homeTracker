@@ -13,6 +13,7 @@ a plant is watered, and past pictures can be viewed for each plant.
 To Do:
 - Incorporate Javascript to update the frontend
 - Add slideshow feature
+- Add a Rename Plant button that will take care of backend folder management
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
 
