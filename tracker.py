@@ -11,7 +11,8 @@ today = dt.datetime.now()
 temp = today.strftime('%Y-%m-%d')
 
 thirsty = ''
-
+email_list = "emailAddresses.txt"
+thirsty_boi = "/home/danny/scripts/plantTracker/venv/plantFlask/static/thirstyBoy.png"
 
 for item in plants:
 	lastWatered = dt.datetime.strptime(item[2], '%Y-%m-%d')
@@ -29,17 +30,24 @@ for item in plants:
 conn.commit()
 conn.close()
 
-if thirsty != '':
-        user = 'dpculler91@gmail.com'
-        password = 'fotdjuqwjkumhoqh'
-        to = 'dpculler91@gmail.com'
-        subject = 'Plant Baby Alert!'
-        text = thirsty + '\n\n\n'
-        image = yagmail.inline("/home/danny/scripts/venv/plantFlask/static/thirstyBoy.png")
-        contents = [text,image]
+with open(email_list) as f:
+	emailAddresses = f.readlines()
 
-        try:
-                yag = yagmail.SMTP(user,password)
-                yag.send(to,subject,contents)
-        except:
-                print('Oh noooo...')
+for i in emailAddresses:
+	print(i)
+
+if thirsty != '':
+	for i in emailAddresses:
+	        user = 'dpculler91@gmail.com'
+        	password = 'fotdjuqwjkumhoqh'
+	        to = i
+	        subject = 'Plant Baby Alert!'
+	        text = thirsty + '\n\n\n'
+	        image = yagmail.inline(thirsty_boi)
+        	contents = [text,image]
+
+	        try:
+        	        yag = yagmail.SMTP(user,password)
+                	yag.send(to,subject,contents)
+	        except:
+	                print('Oh noooo...')
