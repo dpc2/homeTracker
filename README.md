@@ -14,6 +14,9 @@ To Do:
 - Incorporate Javascript to update the frontend
 - Add slideshow feature
 - Add a Rename Plant button that will take care of backend folder management
+- Request photo when selecting Watered Today
+- Link to photo gallery from individual plant pages
+- Plant profile pics displayed on front page
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
 
