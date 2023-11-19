@@ -15,13 +15,13 @@ To Do:
 - Add slideshow feature
 - Add a Rename Plant button that will take care of backend folder management
 - Request photo when selecting Watered Today
-- Link to photo gallery from individual plant pages
 - Plant profile pics displayed on front page
+- <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
 
 <p>
-The Flask server currently runs on a Raspberry Pi 4 connected to my home WiFi network, though I'd like to eventually run it off a more legitimate 
+The Flask server currently runs on a Raspberry Pi 4 connected to my home WiFi network, though I'd like to eventually run it from a more legitimate 
 home server.
 </p>
 
