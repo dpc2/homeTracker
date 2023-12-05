@@ -16,6 +16,7 @@ To Do:
 - Add a Rename Plant button that will take care of backend folder management
 - Request photo when selecting Watered Today
 - Plant profile pics displayed on front page
+- Add a "Repot me!" feature
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
