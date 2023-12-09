@@ -18,7 +18,7 @@ app.secret_key = os.urandom(12)
 # Upload configurations
 currentDir = dirname(__file__)
 imagePath = join(currentDir, "static/images/")
-ALLOWED_EXTENSIONS = {'jpg'}
+ALLOWED_EXTENSIONS = {'jpg','jpeg'}
 app.add_url_rule(
 	"/<string:plantName>/upload/", endpoint="upload", build_only=True
 )
@@ -43,7 +43,7 @@ def allowed_file(filename):
 
 
 #------------------------------------#
-#			    Routes
+#		Routes
 #------------------------------------#
 
 @app.route('/')
@@ -172,7 +172,10 @@ def viewPics(plantName):
 	imgList = sorted(os.listdir(fullPath))
 	print(imgList)
 	imgList = ['images/' + plantName + '/' + i for i in imgList]
+	print("imgList: \n")
 	print(imgList)
+	print("last item: \n")
+	print(imgList[-1])
 
 	string = ''.join(imgList)
 	myDates = re.findall('[2][0][2-9][0-9][0-9][0-9][0-9][0-9]', string)
@@ -193,10 +196,25 @@ def viewPics(plantName):
 							enumerate = enumerate, dateList = dateList)
 
 
-#@app.route('/<name>/upload/')
-#def upload(name):
-	#print(UPLOAD_FOLDER + name.replace(' ',''))
-	#print(app.config["UPLOAD_FOLDER"], name.replace(' ','').strip())
-	#return send_from_directory(UPLOAD_FOLDER + name.replace(' ',''))
-	#return send_from_directory(app.config["UPLOAD_FOLDER"], name.replace(' ',''))
+
+@app.route('/pod/', methods=('GET',))
+def pod():
+	conn = get_db_connection()
+	todayPOD = conn.execute('SELECT * FROM plants ORDER BY RANDOM() LIMIT 1').fetchone()
+	conn.close()
+
+	plantName = todayPOD['name'].replace(' ','')
+	print(plantName)
+	fullPath = imagePath + plantName
+
+	imgList = sorted(os.listdir(fullPath))
+	print(imgList)
+	imgList = ['images/' + plantName + '/' + i for i in imgList]
+	print("imgList: \n")
+	print(imgList)
+	print("last item: \n")
+	mostRecent = imgList[-1]
+	print(imgList[-1])
+
+	return render_template('pod.html', todayPOD=todayPOD, mostRecent=mostRecent)
 

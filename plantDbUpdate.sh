@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/danny/scripts/venv/plantFlask/
+cd /home/danny/scripts/plantTracker/venv/plantFlask/
 git add static/images/
 git status |
 if grep -q "new file:" $1; then

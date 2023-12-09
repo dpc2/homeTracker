@@ -1,0 +1,11 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+<h1><u>Today's Plant of the Day:</u></h1>
+<h2>{{ todayPOD['name'] }}</h2>
+<img class="resize" src = "{{ url_for('static', filename=mostRecent)}}" >
+<br>
+<br>
+
+{% endblock %}
