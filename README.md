@@ -17,7 +17,9 @@ To Do:
 - Request photo when selecting Watered Today
 - Plant profile pics displayed on front page
 - Add a "Repot me!" feature
-- Picture of the day
+- Plant of the day
+- Reassess dates after changing Dry Out time
+- Total number of plants at bottom of the page
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
