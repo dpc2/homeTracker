@@ -10,7 +10,7 @@ script is triggered by a cronjob to run every day at noon. It checks how many da
 column in the SQLite table, and sends me an email from myself using Yagmail if there are any thirsty plants. Pictures are uploaded each time
 a plant is watered, and past pictures can be viewed for each plant.
 
-To Do:
+Future features:
 - Incorporate Javascript to update the frontend
 - Add slideshow feature
 - Add a Rename Plant button that will take care of backend folder management
@@ -20,6 +20,7 @@ To Do:
 - Plant of the day
 - Reassess dates after changing Dry Out time
 - Total number of plants at bottom of the page
+- Handling iPhone photos: naming conventions
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
