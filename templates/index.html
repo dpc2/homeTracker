@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h3 class="header3">Thirsty boi(s)</h3>
+	<h3 class="header3">Thirsty little guys...</h3>
 	<table id="plants", class="header3">
-                <th><u>Plant name:</u></th>
-		<th><u>Dry out:</u></th>
+                <th><u></u></th>
+
 		{% for thirstyToday in thirstyToday %}
 			{% if loop.index % 2 == 0 %}
 				{% set bg_color = '#9EF1AE' %}
@@ -13,8 +13,7 @@
 			{% endif %}		
 
                         <tr style="background-color: {{ bg_color }}">
-                                <td><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
-                                <td> {{ thirstyToday['dryOut'] }}</td>
+                                <td class="header3"><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
                         </tr>
 		{% endfor %}
 	</table>
@@ -26,8 +25,9 @@
 	<br>
 	<table id="plants", class="paddingBetweenCols">
 		<th><u>Plant name:</u></th>
-                <th><u>Dry out:</u></th>
-                <th><u>Days left:</u></th>
+		<th><u>Days left</u></th>
+                <th><u>out of...</u></th>
+		<th><u>Pics</u></th>
 
                 {% for plants in plants %}
                         {% if loop.index % 2 == 0 %}
@@ -38,9 +38,9 @@
 			
 			<tr style="background-color: {{ bg_color }}">
                                 <td><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
+				<td> {{ plants['remaining'] }}</td>
                                 <td> {{ plants['dryOut'] }}</td>
-                                <td> {{ plants['remaining'] }}</td>
-                                <td><a href="{{ url_for('viewPics', plantName=plants['name']) }}">Pics</a></td>
+                                <td><a href="{{ url_for('viewPics', plantName=plants['name']) }}">Link</a></td>
                         </tr>
                 {% endfor %}
         </table>

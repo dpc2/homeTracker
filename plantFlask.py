@@ -48,11 +48,24 @@ def allowed_file(filename):
 
 @app.route('/')
 def index():
+	today = dt.datetime.now()
 	conn = get_db_connection()
 	plants = conn.execute('SELECT * FROM plants ORDER BY name').fetchall()
 	thirstyToday = conn.execute('SELECT * FROM plants WHERE remaining < 1 ORDER BY name').fetchall()
 	conn.close()
-	return render_template('index.html', thirstyToday=thirstyToday, plants=plants)
+
+
+	for item in thirstyToday:
+		lastWatered = dt.datetime.strptime(item[2], '%Y-%m-%d')
+		print(lastWatered)
+		delta = int(item[3])
+		deltaDays = today - lastWatered
+		itsBeen = deltaDays.days
+
+		print(item[1] + " was last watered on " + item[2])
+		print("That means it has been " + str(itsBeen) + " days." + "\n") 
+
+	return render_template('index.html', thirstyToday=thirstyToday, plants=plants, itsBeen=itsBeen)
 
 
 @app.route('/addNew/', methods=('GET', 'POST'))
