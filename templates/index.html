@@ -23,6 +23,12 @@
 
 	<br>
 	<br>
+        <form action="{{ url_for('refreshDb') }}">
+                <input type="submit" value="Refresh" class="refresh">
+        </form>
+
+	<br>
+	<br>
 	<table id="plants", class="paddingBetweenCols">
 		<th><u>Plant name:</u></th>
 		<th><u>Days left</u></th>

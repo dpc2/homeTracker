@@ -40,11 +40,13 @@ nav a {
 	font-size: 2em;
 	display: inline-block;
 	vertical-align: middle;
-	margin-left: 20px;
+	margin-left: 10px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	text-decoration: none;
 	background-color: #5A67FA;
+	padding: 10px 10px 10px 10px;
+	border-radius: 20px;
 }
 .paddingBetweenCols td {
 	padding:5px 40px 5px 40px;
@@ -54,6 +56,10 @@ nav a {
 	margin-left: 0px;
 	marign-right: 0px;
 }
+.refresh{
+	margin-left: 30px;
+}
+
 a.button {
 	text-decoration: none;
 	border: solid;

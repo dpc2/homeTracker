@@ -5,6 +5,7 @@ from os.path import dirname, join
 import datetime as dt
 from datetime import datetime
 from werkzeug.utils import secure_filename
+import subprocess
 from flask import (
 	Flask, render_template,
 	request, url_for, flash, redirect,
@@ -231,3 +232,7 @@ def pod():
 
 	return render_template('pod.html', todayPOD=todayPOD, mostRecent=mostRecent)
 
+@app.route('/refreshDb')
+def refreshDb():
+   result = subprocess.check_output("python3 tracker.py", shell=True)
+   return redirect(url_for('index'))
