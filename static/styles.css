@@ -21,18 +21,23 @@ div.container {
 	display: inline;
 }
 
-.header3 {
+.thirstyTable {
 	margin-left: 40px;
+	border-radius: 20px;
+        border-radius: 30px;
+        overflow: hidden;
 }
-td.header3 {
-        padding:5px 40px 5px 40px;
-        text-align: center;
+.plantTable{
+	border-radius: 30px;
+	overflow: hidden;
+}
+.roundedCorner{
+	border-radius: 20px;
 }
 
-.plants {
-	padding: 10px;
-	margin: 5px;
-	background-color: #22D36A;
+td.thirstyList {
+        padding: 5px 20px 5px 20px;
+        text-align: center;
 }
 
 nav a {

@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<h3 class="header3">Thirsty little guys...</h3>
-	<table id="plants", class="header3">
+	<h4 class="header3" style="margin-left: 40px">Thirsty little guys...</h4>
+	<table class="thirstyTable">
                 <th><u></u></th>
 
 		{% for thirstyToday in thirstyToday %}
@@ -13,7 +13,7 @@
 			{% endif %}		
 
                         <tr style="background-color: {{ bg_color }}">
-                                <td class="header3"><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
+                                <td class="thirstyList"><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
                         </tr>
 		{% endfor %}
 	</table>
