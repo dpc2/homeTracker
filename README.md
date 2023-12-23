@@ -21,6 +21,7 @@ Future features:
 - Reassess dates after changing Dry Out time
 - Total number of plants at bottom of the page
 - Handling iPhone photos: naming conventions
+- Add most recent picture to the edit page
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
