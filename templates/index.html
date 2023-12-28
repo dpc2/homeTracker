@@ -29,7 +29,7 @@
 
 	<br>
 	<br>
-	<table id="plants", class="paddingBetweenCols">
+	<table class="plantTable">
 		<th><u>Plant name:</u></th>
 		<th><u>Days left</u></th>
                 <th><u>out of...</u></th>
@@ -43,13 +43,15 @@
                         {% endif %}
 			
 			<tr style="background-color: {{ bg_color }}">
-                                <td><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
-				<td> {{ plants['remaining'] }}</td>
-                                <td> {{ plants['dryOut'] }}</td>
-                                <td><a href="{{ url_for('viewPics', plantName=plants['name']) }}">Link</a></td>
+                                <td class="plantsList"><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
+				<td class="plantsList"> {{ plants['remaining'] }}</td>
+                                <td class="plantsList"> {{ plants['dryOut'] }}</td>
+                                <td class="plantsList"><a href="{{ url_for('viewPics', plantName=plants['name']) }}">Link</a></td>
                         </tr>
                 {% endfor %}
         </table>
+
+
 	<br>
 	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
 

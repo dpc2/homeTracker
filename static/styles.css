@@ -21,25 +21,32 @@ div.container {
 	display: inline;
 }
 
+/* Index table styling */
+
 .thirstyTable {
 	margin-left: 40px;
-	border-radius: 20px;
         border-radius: 30px;
         overflow: hidden;
 }
-.plantTable{
-	border-radius: 30px;
-	overflow: hidden;
-}
-.roundedCorner{
-	border-radius: 20px;
-}
+
 
 td.thirstyList {
         padding: 5px 20px 5px 20px;
         text-align: center;
 }
 
+.plantTable {
+	margin-left: 40px;
+        border-radius: 80px 80px 40px 40px;
+        overflow: hidden;
+}
+
+td.plantsList {
+        padding: 5px 40px 5px 40px;
+        text-align: center;
+}
+
+/* Nav bar */
 nav a {
 	color: #25FF00;
 	font-size: 2em;
@@ -53,14 +60,7 @@ nav a {
 	padding: 10px 10px 10px 10px;
 	border-radius: 20px;
 }
-.paddingBetweenCols td {
-	padding:5px 40px 5px 40px;
-	text-align: center;
-}
-.paddingBetweenCols {
-	margin-left: 0px;
-	marign-right: 0px;
-}
+
 .refresh{
 	margin-left: 30px;
 }
@@ -73,9 +73,11 @@ a.button {
 	color: #0400FF;
 
 }
+
 body.body {
 	background-color: #CED2FC;
 }
+
 .logo {
 	width: 50px;
 	display: inline-block;
@@ -85,6 +87,7 @@ body.body {
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
+
 form.edit {
 	margin-left: 20px;
 }
