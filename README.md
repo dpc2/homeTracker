@@ -17,11 +17,11 @@ Future features:
 - Request photo when selecting Watered Today
 - Plant profile pics displayed on front page
 - Add a "Repot me!" feature
-- Plant of the day
-- Reassess dates after changing Dry Out time
 - Total number of plants at bottom of the page
 - Handling iPhone photos: naming conventions
 - Add most recent picture to the edit page
+- <s>Plant of the day</s>
+- <s>Reassess dates after changing Dry Out time - Refesh button</s>
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 </p>
