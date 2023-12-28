@@ -214,23 +214,16 @@ def viewPics(plantName):
 @app.route('/pod/', methods=('GET',))
 def pod():
 	conn = get_db_connection()
-	todayPOD = conn.execute('SELECT * FROM plants ORDER BY RANDOM() LIMIT 1').fetchone()
+	todayPOD = conn.execute('SELECT * FROM pod WHERE id = "1"').fetchone()
 	conn.close()
 
-	plantName = todayPOD['name'].replace(' ','')
+	plantName = todayPOD['name']
 	print(plantName)
-	fullPath = imagePath + plantName
 
-	imgList = sorted(os.listdir(fullPath))
-	print(imgList)
-	imgList = ['images/' + plantName + '/' + i for i in imgList]
-	print("imgList: \n")
-	print(imgList)
-	print("last item: \n")
-	mostRecent = imgList[-1]
-	print(imgList[-1])
+	filePath = todayPOD['filePath']
+	print(filePath)
 
-	return render_template('pod.html', todayPOD=todayPOD, mostRecent=mostRecent)
+	return render_template('pod.html', todayPOD=todayPOD, mostRecent=filePath)
 
 @app.route('/refreshDb')
 def refreshDb():
