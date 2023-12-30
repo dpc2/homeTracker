@@ -69,8 +69,11 @@ a.button {
 	text-decoration: none;
 	border: solid;
 	border-color: #0400FF;
-	margin-left: 30px;
+	margin-left: 40px;
+	padding: 5px 5px 5px 5px;
 	color: #0400FF;
+	border-radius: 20px;
+	background-color: #e9eafa;
 
 }
 
