@@ -1,58 +1,16 @@
-{% extends 'base.html' %}
-
 {% block content %}
-	<h4 class="header3" style="margin-left: 40px">Thirsty little guys...</h4>
-	<table class="thirstyTable">
-                <th><u></u></th>
 
-		{% for thirstyToday in thirstyToday %}
-			{% if loop.index % 2 == 0 %}
-				{% set bg_color = '#9EF1AE' %}
-			{% else %}
-				{% set bg_color = '#9EF1DC' %}
-			{% endif %}		
+<h1>Hello World! This is the home page</h1>
 
-                        <tr style="background-color: {{ bg_color }}">
-                                <td class="thirstyList"><a href="{{ url_for('edit', plantName=thirstyToday['name']) }}">{{ thirstyToday['name'] }}</a></td>
-                        </tr>
-		{% endfor %}
-	</table>
+<p>
+    This is the Culler/Kilar Fam home assistant site. Click the
+    links below to access different branches of the site.
+</p>
 
-	<br>
-	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
+<ul class="nav">
+    <li><a href="{{ url_for('plantTracker') }}">Plant Tracker</a></li>
+    <li><a href="{{ url_for('beeTracker') }}">Bee Tracker</a></li>
 
-	<br>
-	<br>
-        <form action="{{ url_for('refreshDb') }}">
-                <input type="submit" value="Refresh" class="refresh">
-        </form>
-
-	<br>
-	<br>
-	<table class="plantTable">
-		<th><u>Plant name:</u></th>
-		<th><u>Days left</u></th>
-                <th><u>out of...</u></th>
-		<th><u>Pics</u></th>
-
-                {% for plants in plants %}
-                        {% if loop.index % 2 == 0 %}
-                                {% set bg_color = '#9EF1AE' %}
-                        {% else %}
-                                {% set bg_color = '#9EF1DC' %}
-                        {% endif %}
-			
-			<tr style="background-color: {{ bg_color }}">
-                                <td class="plantsList"><a href="{{ url_for('edit', plantName=plants['name']) }}">{{ plants['name'] }}</a></td>
-				<td class="plantsList"> {{ plants['remaining'] }}</td>
-                                <td class="plantsList"> {{ plants['dryOut'] }}</td>
-                                <td class="plantsList"><a href="{{ url_for('viewPics', plantName=plants['name']) }}">Link</a></td>
-                        </tr>
-                {% endfor %}
-        </table>
-
-
-	<br>
-	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
+</ul>
 
 {% endblock %}

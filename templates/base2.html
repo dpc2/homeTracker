@@ -9,9 +9,9 @@
         <hr>
         <nav>
                 <img class="logo" src="{{ url_for('static', filename='nook.png') }}">
-                <a href="{{ url_for('index') }}">  My Plant Tracker  </a>
-		<a href="{{ url_for('pod') }}"> Plant of the Day </a>
-		<a href="{{ url_for('addNew') }}">Add New</a>
+                <a href="{{ url_for('plantTracker') }}" class="mainNav"> Plant Tracker </a>
+		<a href="{{ url_for('pod') }}" class="mainNav"> Plant of the Day </a>
+		<a href="{{ url_for('addNew') }}" class="mainNav">Add New</a>
         </nav>
         <hr>
         <div class="content">

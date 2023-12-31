@@ -44,11 +44,20 @@ def allowed_file(filename):
 
 
 #------------------------------------#
-#		Routes
+#				Index
 #------------------------------------#
 
 @app.route('/')
 def index():
+
+	return render_template('index.html')
+
+#------------------------------------#
+#	 	Plant Tracker Routes
+#------------------------------------#
+
+@app.route('/plantTracker')
+def plantTracker():
 	today = dt.datetime.now()
 	conn = get_db_connection()
 	plants = conn.execute('SELECT * FROM plants ORDER BY name').fetchall()
@@ -66,7 +75,7 @@ def index():
 		print(item[1] + " was last watered on " + item[2])
 		print("That means it has been " + str(itsBeen) + " days." + "\n") 
 
-	return render_template('index.html', thirstyToday=thirstyToday, plants=plants, itsBeen=itsBeen)
+	return render_template('plantTracker.html', thirstyToday=thirstyToday, plants=plants, itsBeen=itsBeen)
 
 
 @app.route('/addNew/', methods=('GET', 'POST'))
@@ -88,7 +97,7 @@ def addNew():
 				(name, lastWatered, dryOut))
 			conn.commit()
 			conn.close()
-			return redirect(url_for('index'))
+			return redirect(url_for('plantTracker'))
 
 	return render_template('addNew.html')
 
@@ -146,7 +155,7 @@ def edit(plantName):
 				print('Created folder!')
 
 			file.save(myDirectory + '/' + filename)
-			return redirect(url_for('index'))
+			return redirect(url_for('plantTracker'))
 	return render_template('edit.html', plant=plant)
 
 
@@ -161,7 +170,7 @@ def wateredToday(plantName):
 	conn.commit()
 	conn.close()
 	#flash('"{}" was watered today!'.format(plant['name']))
-	return redirect(url_for('index'))
+	return redirect(url_for('plantTracker'))
 
 
 @app.route('/<string:plantName>/delete/', methods=('POST',))
@@ -172,7 +181,7 @@ def delete(plantName):
 	conn.commit()
 	conn.close()
 	#flash('"{}" was successfully deleted!'.format(plant['name']))
-	return redirect(url_for('index'))
+	return redirect(url_for('plantTracker'))
 
 
 @app.route('/<string:plantName>/viewPics/', methods=('GET',))
@@ -227,5 +236,16 @@ def pod():
 
 @app.route('/refreshDb')
 def refreshDb():
-   result = subprocess.check_output("python3 tracker.py", shell=True)
-   return redirect(url_for('index'))
+   result = subprocess.check_output("python3 updateDb_noEmail.py", shell=True)
+   return redirect(url_for('plantTracker'))
+
+
+
+#------------------------------------#
+#	 	  Bee Tracker Routes
+#------------------------------------#
+
+@app.route('/beeTracker')
+def beeTracker():
+
+	return render_template('beeTracker.html')

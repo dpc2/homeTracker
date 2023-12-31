@@ -47,7 +47,7 @@ td.plantsList {
 }
 
 /* Nav bar */
-nav a {
+a.mainNav {
 	color: #25FF00;
 	font-size: 2em;
 	display: inline-block;
@@ -77,6 +77,8 @@ a.button {
 
 }
 
+/* Body */
+
 body.body {
 	background-color: #CED2FC;
 }
@@ -91,6 +93,20 @@ body.body {
 	margin-bottom: 0px;
 }
 
+.beeLogo {
+	width: 60px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px 0px 0px 20px;
+	background-color: #ffd500;
+	border-radius: 30px;
+	border-style: solid;
+}
+
 form.edit {
 	margin-left: 20px;
+}
+
+h4.header4 {
+	margin: 20px 0px 10px 40px;
 }
