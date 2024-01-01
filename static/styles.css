@@ -1,3 +1,63 @@
+/* Plant Tracker Section */
+
+/* Nav bar */
+
+.logo {
+	width: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0px 10px 0px 20px;
+	border-style: solid;
+	border-radius: 50px;
+	border-color: black;
+}
+
+nav.mainNav {
+	background: rgb(215, 220, 162);
+	padding: 10px 0px 10px 0px;
+	border: solid;
+}
+
+a.mainNav {
+	color: black;
+	font-size: 2em;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-decoration: none;
+	background-color: rgb(97, 185, 72);
+	padding: 10px 10px 10px 10px;
+	border-radius: 20px;
+	border-style: solid;
+	border-color: black;
+
+}
+
+/* Body */
+
+body.body {
+	background-image: url("plantBackground.jpg");
+	margin: 0px;
+}
+
+form.edit {
+	margin-left: 20px;
+}
+
+p.thirsty {
+	margin: 20px 0px 10px 40px;
+	padding: 10px 10px 10px 10px;
+	font-size: 1.25em;
+	background-color: rgb(123, 190, 124);
+	display: inline-block;
+	border: dotted;
+	border-radius: 15px;
+}
+
+/* Pic Gallery */
+
 img.resize {
 	width: 500px;
 	height: auto;
@@ -21,48 +81,44 @@ div.container {
 	display: inline;
 }
 
-/* Index table styling */
+
+/* Plant Index */
 
 .thirstyTable {
 	margin-left: 40px;
-        border-radius: 30px;
-        overflow: hidden;
+    border-radius: 40px;
+    overflow: hidden;
 }
 
 
 td.thirstyList {
         padding: 5px 20px 5px 20px;
         text-align: center;
+		border: double;
+		border-radius: 15px;
 }
 
 .plantTable {
 	margin-left: 40px;
-        border-radius: 80px 80px 40px 40px;
+        border-radius: 40px 40px 15px 15px;
         overflow: hidden;
+}
+
+th.plantsList {
+	background-color: rgb(255, 251, 242);
+	border: double;
+	border-radius: 30px 30px 0px 0px;
 }
 
 td.plantsList {
         padding: 5px 40px 5px 40px;
         text-align: center;
-}
-
-/* Nav bar */
-a.mainNav {
-	color: #25FF00;
-	font-size: 2em;
-	display: inline-block;
-	vertical-align: middle;
-	margin-left: 10px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	text-decoration: none;
-	background-color: #5A67FA;
-	padding: 10px 10px 10px 10px;
-	border-radius: 20px;
+		border: double;
+		border-radius: 10px;
 }
 
 .refresh{
-	margin-left: 30px;
+	margin-left: 40px;
 }
 
 a.button {
@@ -77,36 +133,48 @@ a.button {
 
 }
 
-/* Body */
 
-body.body {
-	background-color: #CED2FC;
+
+
+
+
+/* Bee Tracker Section */
+
+nav.beeNav {
+	background-color: rgb(249, 251, 129);
+	border: solid;
+	border-radius: 20px 20px 0px 0px;
 }
 
-.logo {
-	width: 50px;
+a.beeNav {
+	color: black;
+	font-size: 2em;
 	display: inline-block;
 	vertical-align: middle;
-	margin-left: 20px;
-	margin-right: 10px;
+	margin-left: 10px;
 	margin-top: 0px;
 	margin-bottom: 0px;
+	text-decoration: none;
+	background-color: #ffd500;
+	padding: 10px 10px 10px 10px;	
+	border-radius: 20px;
+	border-style: solid;
+	margin: 10px 0px 10px 10px;
 }
 
 .beeLogo {
-	width: 60px;
-	display: inline-block;
-	vertical-align: middle;
-	margin: 0px 0px 0px 20px;
-	background-color: #ffd500;
-	border-radius: 38px;
-	border-style: solid;
+        width: 60px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0px 0px 0px 20px;
+        background-color: #ffd500;
+        border-radius: 55px;
+        border-style: solid;
+		border-color: black;
 }
 
-form.edit {
-	margin-left: 20px;
+body.beeBody {
+	background-image: url("beeBackground.jpg");
+	margin: 0px;
 }
 
-h4.header4 {
-	margin: 20px 0px 10px 40px;
-}

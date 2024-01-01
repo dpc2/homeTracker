@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	<h4 class="header4"><u>Thirsty little guys...</u></h4>
+	<p class="thirsty"><u>Thirsty little guys:</u></p>
 
 	<table class="thirstyTable">
                 <th><u></u></th>
@@ -21,21 +21,19 @@
 	</table>
 
 	<br>
-	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
-
-	<br>
-	<br>
         <form action="{{ url_for('refreshDb') }}">
                 <input type="submit" value="Refresh" class="refresh">
         </form>
 
 	<br>
 	<br>
+
+	<p class="thirsty"><u>The rest of the gang:</u></p>
 	<table class="plantTable">
-		<th><u>Plant name:</u></th>
-		<th><u>Days left</u></th>
-                <th><u>out of...</u></th>
-		<th><u>Pics</u></th>
+		<th class="plantsList"><u>Plant name:</u></th>
+		<th class="plantsList"><u>Days left</u></th>
+                <th class="plantsList"><u>out of...</u></th>
+		<th class="plantsList"><u>Pics</u></th>
 
                 {% for plants in plants %}
                         {% if loop.index % 2 == 0 %}
