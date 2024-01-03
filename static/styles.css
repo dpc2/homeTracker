@@ -13,7 +13,10 @@
 }
 
 nav.mainNav {
-	background: rgb(215, 220, 162);
+	background-image: linear-gradient(to bottom right, rgb(45, 148, 55),
+	rgb(65, 237, 53),  rgba(45, 148, 55), rgb(65, 237, 53),
+	rgb(65, 237, 53),  rgba(45, 148, 55), rgb(65, 237, 53),
+	rgb(65, 237, 53),  rgba(45, 148, 55), rgb(65, 237, 53));
 	padding: 10px 0px 10px 0px;
 	border: solid;
 }
@@ -94,8 +97,13 @@ div.container {
 td.thirstyList {
         padding: 5px 20px 5px 20px;
         text-align: center;
-		border: double;
-		border-radius: 15px;
+	border: double;
+	border-radius: 15px;
+}
+
+a.thirstyList {
+	color: inherit;
+	text-decoration: none;
 }
 
 .plantTable {
@@ -176,5 +184,25 @@ a.beeNav {
 body.beeBody {
 	background-image: url("beeBackground.jpg");
 	margin: 0px;
+}
+
+
+/* Index Styling */
+
+h1.indexH1 {
+
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text; 
+	background-image: linear-gradient(to right,
+	red, orange, yellow, green, blue,
+	indigo, violet, indigo, blue, green,
+	yellow, orange, red);
+	padding: 20px;
+	margin: 20px;
+	border-style: solid;
+	border-width: 10px;
+	border-image: conic-gradient(red,orange,
+	yellow, green, blue, indigo, violet, red) 1;
+	display: inline-block;
 }
 

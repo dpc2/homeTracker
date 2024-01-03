@@ -64,6 +64,8 @@ def plantTracker():
 	thirstyToday = conn.execute('SELECT * FROM plants WHERE remaining < 1 ORDER BY name').fetchall()
 	conn.close()
 
+	# Initializing variable, program breaks if there are no thirsty plants and this is not set to 0
+	itsBeen = 0
 
 	for item in thirstyToday:
 		lastWatered = dt.datetime.strptime(item[2], '%Y-%m-%d')

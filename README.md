@@ -10,9 +10,8 @@ script is triggered by a cronjob to run every day at noon. It checks how many da
 column in the SQLite table, and sends me an email from myself using Yagmail if there are any thirsty plants. Pictures are uploaded each time
 a plant is watered, and past pictures can be viewed for each plant.
 
-Future features:
+<u>Future features:</u>
 - Incorporate Javascript to update the frontend
-- Add slideshow feature
 - Add a Rename Plant button that will take care of backend folder management
 - Request photo when selecting Watered Today
 - Plant profile pics displayed on front page
@@ -20,10 +19,15 @@ Future features:
 - Total number of plants at bottom of the page
 - Handling iPhone photos: naming conventions
 - Add most recent picture to the edit page
-- <s>Plant of the day</s>
-- <s>Reassess dates after changing Dry Out time - Refesh button</s>
+- Add Photo Gallery page
+	- Slideshow feature
+- Add In Memorium page
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
+- <s>Reassess dates after changing Dry Out time - Refesh button</s>
+- <s>Plant of the day</s>
+- <s>Bee tracker placeholder</s>
+- <s>Home page</s>
 </p>
 
 <p>
