@@ -38,8 +38,6 @@ a.mainNav {
 
 }
 
-/* Body */
-
 body.body {
 	background-image: url("plantBackground.jpg");
 	margin: 0px;
@@ -187,7 +185,7 @@ body.beeBody {
 }
 
 
-/* Index Styling */
+/* Home Page - Index */
 
 h1.indexH1 {
 
@@ -204,5 +202,10 @@ h1.indexH1 {
 	border-image: conic-gradient(red,orange,
 	yellow, green, blue, indigo, violet, red) 1;
 	display: inline-block;
+}
+
+body.homeBody {
+	background-color: rgb(198, 163, 250);
+
 }
 

@@ -7,17 +7,20 @@
 	<title>{% block title %} {% endblock %}</title>
 </head>
 
-<h1 class="indexH1">Welcome to the Home Assistant home page</h1>
+<body class="homeBody">
 
-<p>
-    This is the Culler/Kilar Fam home assistant site. Click the
-    links below to access different branches of the site.
-</p>
+	<h1 class="indexH1">Welcome to the Home Assistant home page</h1>
 
-<ul class="nav">
-    <li><a href="{{ url_for('plantTracker') }}">Plant Tracker</a></li>
-    <li><a href="{{ url_for('beeTracker') }}">Bee Tracker</a></li>
+		<p>
+	    	This is the Culler/Kilar Fam home assistant site. Click the
+    		links below to access different branches of the site.
+		</p>
 
-</ul>
+	<ul class="nav">
+	    <li><a href="{{ url_for('plantTracker') }}">Plant Tracker</a></li>
+	    <li><a href="{{ url_for('beeTracker') }}">Bee Tracker</a></li>
+	</ul>
+
+</body>
 
 {% endblock %}
