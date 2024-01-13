@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sqlite3
 import datetime as dt
 from datetime import datetime, timedelta

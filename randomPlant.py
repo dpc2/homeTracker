@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import os
 import sqlite3
 from os.path import dirname, join
