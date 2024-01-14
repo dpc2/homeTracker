@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sqlite3
 import datetime as dt
 from datetime import datetime, timedelta
@@ -12,7 +14,7 @@ temp = today.strftime('%Y-%m-%d')
 
 thirsty = ''
 email_list = "emailAddresses.txt"
-thirsty_boi = "/home/danny/scripts/plantTracker/venv/plantFlask/static/thirstyBoy.png"
+thirsty_boi = "/home/danny/scripts/homeTracker/static/thirstyBoy.png"
 
 for item in plants:
 	lastWatered = dt.datetime.strptime(item[2], '%Y-%m-%d')
