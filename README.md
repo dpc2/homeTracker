@@ -62,9 +62,9 @@ home server.
 
 
 ### Setup Steps
-git clone git@github.com:dpc2/homeTracker.git
-python3 -m venv ./homeTracker
-source bin/active
-pip install flask
-pip install yagmail
+git clone git@github.com:dpc2/homeTracker.git <br>
+python3 -m venv ./homeTracker <br>
+source bin/active <br>
+pip install flask <br>
+pip install yagmail <br>
 
