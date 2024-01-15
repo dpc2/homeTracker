@@ -59,3 +59,12 @@ home server.
 <p align="center">
   <img width="597" height="616" src="/static/plantEmail.png">
 </p>
+
+
+### Setup Steps
+git clone git@github.com:dpc2/homeTracker.git
+python3 -m venv ./homeTracker
+source bin/active
+pip install flask
+pip install yagmail
+
