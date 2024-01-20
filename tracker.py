@@ -27,7 +27,7 @@ for item in plants:
 	if daysMod >= delta:
         	thirsty += str(item[1]) + """ bby says, "Please water me! It's been """ + str(daysMod) + " whole days!\"\n\n"
 
-	conn.execute('UPDATE plants SET remaining = ? WHERE name = ?', (timeLeft, name))
+	conn.execute('UPDATE plants SET remaining = ?, timeEllapsed=? WHERE name = ?', (timeLeft, daysMod, name))
 
 conn.commit()
 conn.close()
