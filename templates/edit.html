@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+
+	{% extends 'base.html' %}
+
 
 {% block content %}
 	<h3>Edit <a href="{{ url_for('viewPics', plantName=plant['name']) }}">{{ plant['name'] }}</a></h3>
@@ -26,14 +28,11 @@
 		<input type="text" name="dryOut"
 			value="{{ request.form['dryOut'] or plant['dryOut'] }}"></input>
 		<br>
-
                 <br>
                 <label for="dryOut">It's been: </label>
                 <input type="text" name="itsBeen"
                         value="{{ plant['timeEllapsed'] }}"></input>
                 <br>
-
-
 		<br>
 		<button type="submit">Submit</button>
 		<br>

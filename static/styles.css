@@ -38,6 +38,8 @@ a.mainNav {
 
 }
 
+/* Plant Body */
+
 body.body {
 	background-image: url("plantBackground.jpg");
 	margin: 0px;
@@ -182,6 +184,9 @@ body.beeBody {
 	background-image: url("beeBackground.jpg");
 	margin: 0px;
 }
+
+
+
 
 
 /* Home Page - Index */

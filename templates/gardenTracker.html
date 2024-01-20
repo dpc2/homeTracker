@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'gardenBase.html' %}
 
 {% block content %}
 
@@ -16,7 +16,7 @@
 
                         <tr style="background-color: {{ bg_color }}">
                                 <td class="thirstyList">
-					<a class="thirstyList" href="{{ url_for('edit', plantName=thirstyToday['name'], editType='plant') }}">
+					<a class="thirstyList" href="{{ url_for('edit', plantName=thirstyToday['name'], editType='garden') }}">
 						{{ thirstyToday['name'] }}
 					</a>
 				</td>
@@ -29,7 +29,6 @@
                 <input type="submit" value="Refresh" class="refresh">
         </form>
 
-	<br>
 	<br>
 
 	<p class="thirsty"><u>The rest of the gang:</u></p>
@@ -48,7 +47,9 @@
 			
 			<tr style="background-color: {{ bg_color }}">
                                 <td class="plantsList">
-					<a class="thirstyList" href="{{ url_for('edit', plantName=plants['name'], editType='plant') }}">
+					<a class="thirstyList" href="{{ url_for('edit', plantName=plants['name'], editType='garden') }}">
+
+
 						{{ plants['name'] }}
 					</a>
 				</td>

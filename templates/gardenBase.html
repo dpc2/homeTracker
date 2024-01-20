@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='gardenStyles.css') }}" />
+	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width"/>
+	<title>{% block title %} {% endblock %}</title>
+</head>
+<body class="gardenBody">
+	<nav class="gardenNav">
+		<a href="{{ url_for('index') }}"> <img class="gardenLogo" src="{{ url_for('static', filename='gardenLogo.png') }}"></a>
+		<a href="{{ url_for('gardenTracker') }}" class="gardenNav">Garden Tracker</a>
+		<a href="{{ url_for('pod') }}" class="gardenNav"> Plant of the Day </a>
+		<a href="{{ url_for('addNewGarden') }}" class="gardenNav">Add New</a>
+	</nav>
+	<div class="content">
+		{% block content %} {% endblock %}
+	</div>
+</body>
+</html>

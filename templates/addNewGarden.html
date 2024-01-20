@@ -1,0 +1,42 @@
+<!-- Extend the base template -->
+{% extends 'gardenBase.html' %}
+
+{% block content %}
+	<h3>{% block title %}Add a new garden plant{% endblock %}</h3>
+
+	<form method="post" style="margin-left: 20px">
+
+		<!-- Text field with the name "name", used to access
+		name data in my /addNew route. Set value of text field
+		to request.form['name'], either empty or a saved version
+		of the title if the form is valid -->
+
+		<label for="name">Name:</label>
+		<br>
+		<input type="text" name="name"
+			placeholder="Enter plant name"
+			value="{{ request.form['name'] }}"></input>
+		<br>
+
+		<br>
+		<label for="lastWatered">Last Watered Date:</label>
+		<br>
+		<input type="date" name="lastWatered"
+			placeholder="YYYY-MM-DD"
+			value="{{ request.form['lastWatered'] }}"></input>
+		<br>
+
+		<br>
+		<label for="dryOut">Dry Out Duration:</label>
+		<br>
+		<input type="number" name="dryOut"
+			placeholder="Enter dry out duration"
+			value="{{ request.form['dryOut'] }}"></input>
+		<br>
+		<br>
+		<button type="submit">Submit</button>
+	</form>
+
+<!-- Still need to handle POST requests on the /addNew route -->
+
+{% endblock %}

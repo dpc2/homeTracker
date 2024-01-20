@@ -16,7 +16,7 @@ from flask import (
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
 
-# Upload configurations
+# Picture upload configurations
 currentDir = dirname(__file__)
 imagePath = join(currentDir, "static/images/")
 ALLOWED_EXTENSIONS = {'jpg','jpeg'}
@@ -37,6 +37,14 @@ def get_plant(plantName):
 	#if plant is None:
 	#	abort(404)
 	return plant
+
+def get_garden(plantName):
+	conn = get_db_connection()
+	gardenPlant = conn.execute('SELECT * FROM garden WHERE name = ?', (plantName,)).fetchone()
+	conn.close()
+	#if plant is None:
+	#	abort(404)
+	return gardenPlant
 
 def allowed_file(filename):
         return '.' in filename and \
@@ -103,11 +111,19 @@ def addNew():
 
 	return render_template('addNew.html')
 
+'/<string:devID>:<string:type>/delete/'
 
+@app.route('/<string:plantName>:<string:editType>/edit/', methods=('GET', 'POST'))
+def edit(plantName, editType):
 
-@app.route('/<string:plantName>/edit/', methods=('GET', 'POST'))
-def edit(plantName):
-	plant = get_plant(plantName)
+	print(editType)
+
+	if editType=="garden":
+		plant = get_garden(plantName)
+
+	else:
+		plant = get_plant(plantName)
+
 	print(plant)
 
 	if request.method == 'POST':
@@ -251,3 +267,69 @@ def refreshDb():
 def beeTracker():
 
 	return render_template('beeTracker.html')
+
+
+
+
+#------------------------------------#
+#	 	  Garden Tracker Routes
+#------------------------------------#
+
+@app.route('/gardenTracker')
+def gardenTracker():
+	today = dt.datetime.now()
+	conn = get_db_connection()
+	plants = conn.execute('SELECT * FROM garden ORDER BY name').fetchall()
+	thirstyToday = conn.execute('SELECT * FROM garden WHERE remaining < 1 ORDER BY name').fetchall()
+	conn.close()
+
+	# Initializing variable, program breaks if there are no thirsty plants and this is not set to 0
+	itsBeen = 0
+
+	for item in thirstyToday:
+		lastWatered = dt.datetime.strptime(item[2], '%Y-%m-%d')
+		print(lastWatered)
+		delta = int(item[3])
+		deltaDays = today - lastWatered
+		itsBeen = deltaDays.days
+
+		print(item[1] + " was last watered on " + item[2])
+		print("That means it has been " + str(itsBeen) + " days." + "\n") 
+
+	return render_template('gardenTracker.html', thirstyToday=thirstyToday, plants=plants, itsBeen=itsBeen)
+
+
+@app.route('/addNewGarden/', methods=('GET', 'POST'))
+def addNewGarden():
+	if request.method == 'POST':
+		name = request.form['name']
+		lastWatered = request.form['lastWatered']
+		dryOut = request.form['dryOut']
+
+		if not name:
+			flash('Name is required!')
+		elif not lastWatered:
+			flash('Date last watered is required!')
+		elif not dryOut:
+			flash('Dry out duration is required!')
+		else:
+			conn = get_db_connection()
+			conn.execute('INSERT INTO garden (name, lastWatered, dryOut) VALUES (?, ?, ?)',
+				(name, lastWatered, dryOut))
+			conn.commit()
+			conn.close()
+			return redirect(url_for('gardenTracker'))
+
+	return render_template('addNewGarden.html')
+
+
+@app.route('/<string:gardenName>/delete/', methods=('POST',))
+def deleteGarden(gardenPlantName):
+	plant = get_plant(gardenPlantName)
+	conn = get_db_connection()
+	conn.execute('DELETE FROM garden WHERE name = ?', (gardenPlantName,))
+	conn.commit()
+	conn.close()
+	#flash('"{}" was successfully deleted!'.format(plant['name']))
+	return redirect(url_for('gardenTracker'))
+
