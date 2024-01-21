@@ -40,7 +40,7 @@ body.gardenBody {
 	background-image: url("gardenBackground.jpg");
 	margin: 0px;
     background-position: top 50px center;
-    background-size: 100%;
+    background-size: 50%;
 }
 
 p.thirsty {

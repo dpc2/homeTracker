@@ -43,6 +43,7 @@ a.mainNav {
 body.body {
 	background-image: url("plantBackground.jpg");
 	margin: 0px;
+	background-size: 100%;
 }
 
 form.edit {
