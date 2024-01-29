@@ -144,12 +144,20 @@ def edit(plantName, editType):
 		else:
 			conn = get_db_connection()
 
-			try:
-				conn.execute('UPDATE plants SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
-					(myName, myLastWatered, myDryOut, plantName))
-			except sqlite3.IntegrityError:
-				conn.close()
-				return redirect('/integrityError')
+			if editType == "plant":
+				try:
+					conn.execute('UPDATE plants SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
+						(myName, myLastWatered, myDryOut, plantName))
+				except sqlite3.IntegrityError:
+					conn.close()
+					return redirect('/integrityError')
+			elif editType == "garden":
+				try:	
+					conn.execute('UPDATE garden SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
+						(myName, myLastWatered, myDryOut, plantName))
+				except sqlite3.IntegrityError:
+					conn.close()
+					return redirect('/integrityError')				
 
 			conn.commit()
 			conn.close()
