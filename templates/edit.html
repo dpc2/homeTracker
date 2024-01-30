@@ -1,15 +1,21 @@
-
+{% if source == 'plantTracker' %}
 	{% extends 'base.html' %}
-
+{% else %}
+	{% extends 'gardenBase.html' %}
+{% endif %}
 
 {% block content %}
-	<h3>Edit <a href="{{ url_for('viewPics', plantName=plant['name']) }}">{{ plant['name'] }}</a></h3>
+
+<div class="editDiv">
+
+	<h3 class="edit">Edit <a href="{{ url_for('viewPics', plantName=plant['name']) }}">{{ plant['name'] }}</a></h3>
 	
         <form action="{{ url_for('wateredToday', plantName=plant['name']) }}" method="POST", class="edit">
                 <input type="submit" value="Watered today"
                         onclick="return confirm('Watered today?')">
 	</form>
-	<br>
+
+
 	<form method="post", class="edit", enctype=multipart/form-data>
 		<br>
 		<label for="name">Name: </label>
@@ -41,12 +47,33 @@
 		<input type=submit value=Upload>
 	</form>
 	<br>
+
+</div>
+
 	<hr>
+
+<div class="editDiv">
 	<h3>To delete this entry, click the button below</h3>
 
-	<form action="{{ url_for('delete', plantName=plant['name']) }}" method="POST", class="edit">
-		<input type="submit" value="Delete plant"
-			onclick="return confirm('Are you sure you want to delete this plant?')">
-	</form>
+	{% if source == 'plantTracker' %}
+			{% set mySource = 'plantTracker' %}
+
+			<form action="{{ url_for('delete', plantName=plant['name'], source='plantTracker') }}" method="POST", class="edit">
+				<input type="submit" value="Delete plant"
+					onclick="return confirm('Are you sure you want to delete this plant?')">
+			</form>
+
+	{% else %}
+			{% set mySource = 'gardenTracker' %}
+
+			<form action="{{ url_for('delete', plantName=plant['name'], source='gardenTracker') }}" method="POST", class="edit">
+				<input type="submit" value="Delete plant"
+					onclick="return confirm('Are you sure you want to delete this plant?')">
+			</form>
+
+	{% endif %}
+
+</div>
+
 
 {% endblock %}

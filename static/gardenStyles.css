@@ -47,7 +47,7 @@ p.thirsty {
 	margin: 20px 0px 10px 40px;
 	padding: 10px 10px 10px 10px;
 	font-size: 1.25em;
-	background-color: rgb(123, 190, 124);
+	background-color: #98d58e;
 	display: inline-block;
 	border: dotted;
 	border-radius: 15px;
@@ -106,4 +106,20 @@ a.button {
 	border-radius: 20px;
 	background-color: #e9eafa;
 
+}
+
+
+/* Edit */
+
+div.editDiv {
+	margin: 20px;
+}
+h3.edit {
+	margin: 0px 0px 10px 0px;
+	padding: 10px 10px 10px 10px;
+	font-size: 1.25em;
+	background-color: #98d58e;
+	display: inline-block;
+	border: dotted;
+	border-radius: 15px;
 }

@@ -46,9 +46,6 @@ body.body {
 	background-size: 100%;
 }
 
-form.edit {
-	margin-left: 20px;
-}
 
 p.thirsty {
 	margin: 20px 0px 10px 40px;
@@ -59,6 +56,27 @@ p.thirsty {
 	border: dotted;
 	border-radius: 15px;
 }
+
+/* Edit Page */
+
+
+form.edit {
+	margin-left: 20px;
+}
+div.editDiv {
+	margin: 20px;
+}
+h3.edit {
+	margin: 0px 0px 10px 0px;
+	padding: 10px 10px 10px 10px;
+	font-size: 1.25em;
+	background-color: rgb(123, 190, 124);
+	display: inline-block;
+	border: dotted;
+	border-radius: 15px;
+}
+
+
 
 /* Pic Gallery */
 

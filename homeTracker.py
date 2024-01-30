@@ -82,8 +82,8 @@ def plantTracker():
 		deltaDays = today - lastWatered
 		itsBeen = deltaDays.days
 
-		print(item[1] + " was last watered on " + item[2])
-		print("That means it has been " + str(itsBeen) + " days." + "\n") 
+		#print(item[1] + " was last watered on " + item[2])
+		#print("That means it has been " + str(itsBeen) + " days." + "\n") 
 
 	return render_template('plantTracker.html', thirstyToday=thirstyToday, plants=plants, itsBeen=itsBeen)
 
@@ -113,77 +113,6 @@ def addNew():
 
 '/<string:devID>:<string:type>/delete/'
 
-@app.route('/<string:plantName>:<string:editType>/edit/', methods=('GET', 'POST'))
-def edit(plantName, editType):
-
-	print(editType)
-
-	if editType=="garden":
-		plant = get_garden(plantName)
-
-	else:
-		plant = get_plant(plantName)
-
-	print(plant)
-
-	if request.method == 'POST':
-		myName = request.form['name']
-		myLastWatered = request.form['lastWatered']
-		myDryOut = request.form['dryOut']
-
-		print(myName)
-		print(myLastWatered)
-		print(myDryOut)
-
-		if not myName:
-			flash('Plant name is required!')
-		elif not myLastWatered:
-			flash('Last watered date is required!')
-		elif not myDryOut:
-			flash('Dry out period is required!')
-		else:
-			conn = get_db_connection()
-
-			if editType == "plant":
-				try:
-					conn.execute('UPDATE plants SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
-						(myName, myLastWatered, myDryOut, plantName))
-				except sqlite3.IntegrityError:
-					conn.close()
-					return redirect('/integrityError')
-			elif editType == "garden":
-				try:	
-					conn.execute('UPDATE garden SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
-						(myName, myLastWatered, myDryOut, plantName))
-				except sqlite3.IntegrityError:
-					conn.close()
-					return redirect('/integrityError')				
-
-			conn.commit()
-			conn.close()
-
-		# Uploading daily picture
-		if 'file' not in request.files:
-			flash('No file part')
-			return redirect(request.url)
-		file = request.files['file']
-
-		if file.filename == '':
-			flash('No selected file')
-			return redirect(request.url)
-
-		if file and allowed_file(file.filename):
-			filename = secure_filename(file.filename)
-			myDirectory = imagePath + myName.replace(' ','')
-
-			if os.path.exists(myDirectory) == False:
-				os.mkdir(myDirectory)
-				print('Created folder!')
-
-			file.save(myDirectory + '/' + filename)
-			return redirect(url_for('plantTracker'))
-	return render_template('edit.html', plant=plant)
-
 
 @app.route('/<string:plantName>/wateredToday/', methods=('POST',))
 def wateredToday(plantName):
@@ -196,17 +125,6 @@ def wateredToday(plantName):
 	conn.commit()
 	conn.close()
 	#flash('"{}" was watered today!'.format(plant['name']))
-	return redirect(url_for('plantTracker'))
-
-
-@app.route('/<string:plantName>/delete/', methods=('POST',))
-def delete(plantName):
-	plant = get_plant(plantName)
-	conn = get_db_connection()
-	conn.execute('DELETE FROM plants WHERE name = ?', (plantName,))
-	conn.commit()
-	conn.close()
-	#flash('"{}" was successfully deleted!'.format(plant['name']))
 	return redirect(url_for('plantTracker'))
 
 
@@ -245,7 +163,6 @@ def viewPics(plantName):
 							enumerate = enumerate, dateList = dateList)
 
 
-
 @app.route('/pod/', methods=('GET',))
 def pod():
 	conn = get_db_connection()
@@ -260,23 +177,113 @@ def pod():
 
 	return render_template('pod.html', todayPOD=todayPOD, mostRecent=filePath)
 
-@app.route('/refreshDb')
-def refreshDb():
-   result = subprocess.check_output("python3 updateDb_noEmail.py", shell=True)
-   return redirect(url_for('plantTracker'))
-
-
 
 #------------------------------------#
-#	 	  Bee Tracker Routes
+#			Common Routes
 #------------------------------------#
 
-@app.route('/beeTracker')
-def beeTracker():
 
-	return render_template('beeTracker.html')
+@app.route('/<string:plantName>:<string:source>/edit/', methods=('GET', 'POST'))
+def edit(plantName, source):
+
+	print(source)
+
+	if source=="gardenTracker":
+		plant = get_garden(plantName)
+
+	else:
+		plant = get_plant(plantName)
+
+	#print(plant)
+
+	if request.method == 'POST':
+		myName = request.form['name']
+		myLastWatered = request.form['lastWatered']
+		myDryOut = request.form['dryOut']
+
+		#print(myName)
+		#print(myLastWatered)
+		#print(myDryOut)
+
+		if not myName:
+			flash('Plant name is required!')
+		elif not myLastWatered:
+			flash('Last watered date is required!')
+		elif not myDryOut:
+			flash('Dry out period is required!')
+		else:
+			conn = get_db_connection()
+
+			if source == "plantTracker":
+				try:
+					conn.execute('UPDATE plants SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
+						(myName, myLastWatered, myDryOut, plantName))
+				except sqlite3.IntegrityError:
+					conn.close()
+					return redirect('/integrityError')
+			elif source == "gardenTracker":
+				try:	
+					conn.execute('UPDATE garden SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
+						(myName, myLastWatered, myDryOut, plantName))
+				except sqlite3.IntegrityError:
+					conn.close()
+					return redirect('/integrityError')				
+
+			conn.commit()
+			conn.close()
+
+		# Uploading daily picture
+		if 'file' not in request.files:
+			flash('No file part')
+			return redirect(request.url)
+		file = request.files['file']
+
+		if file.filename == '':
+			flash('No selected file')
+			return redirect(request.url)
+
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			myDirectory = imagePath + myName.replace(' ','')
+
+			if os.path.exists(myDirectory) == False:
+				os.mkdir(myDirectory)
+				print('Created folder!')
+
+			file.save(myDirectory + '/' + filename)
+			return redirect(url_for('plantTracker'))
+	return render_template('edit.html', plant=plant, source=source)
 
 
+@app.route('/<string:source>/refreshDb')
+def refreshDb(source):
+	result = subprocess.check_output("python3 updateDb_noEmail.py", shell=True)
+
+	if source == 'plantTracker':
+		return redirect(url_for('plantTracker'))
+	if source == 'gardenTracker':
+		return redirect(url_for('gardenTracker'))
+	
+
+@app.route('/<string:plantName>:<string:source>/delete/', methods=('POST',))
+def delete(plantName, source):
+	plant = get_plant(plantName)
+	conn = get_db_connection()
+
+	print(plantName + "is getting deleted from " + source + "\n")
+
+	if source == 'plantTracker':
+		conn.execute('DELETE FROM plants WHERE name = ?', (plantName,))
+	if source == 'gardenTracker':
+		conn.execute('DELETE FROM garden WHERE name = ?', (plantName,))
+	
+	conn.commit()
+	conn.close()
+
+	if source == 'plantTracker':
+		return redirect(url_for('plantTracker'))
+	if source == 'gardenTracker':
+		return redirect(url_for('gardenTracker'))
 
 
 #------------------------------------#
@@ -296,13 +303,13 @@ def gardenTracker():
 
 	for item in thirstyToday:
 		lastWatered = dt.datetime.strptime(item[2], '%Y-%m-%d')
-		print(lastWatered)
+		#print(lastWatered)
 		delta = int(item[3])
 		deltaDays = today - lastWatered
 		itsBeen = deltaDays.days
 
-		print(item[1] + " was last watered on " + item[2])
-		print("That means it has been " + str(itsBeen) + " days." + "\n") 
+		#print(item[1] + " was last watered on " + item[2])
+		#print("That means it has been " + str(itsBeen) + " days." + "\n") 
 
 	return render_template('gardenTracker.html', thirstyToday=thirstyToday, plants=plants, itsBeen=itsBeen)
 
@@ -331,13 +338,12 @@ def addNewGarden():
 	return render_template('addNewGarden.html')
 
 
-@app.route('/<string:gardenName>/delete/', methods=('POST',))
-def deleteGarden(gardenPlantName):
-	plant = get_plant(gardenPlantName)
-	conn = get_db_connection()
-	conn.execute('DELETE FROM garden WHERE name = ?', (gardenPlantName,))
-	conn.commit()
-	conn.close()
-	#flash('"{}" was successfully deleted!'.format(plant['name']))
-	return redirect(url_for('gardenTracker'))
 
+#------------------------------------#
+#	 	  Bee Tracker Routes
+#------------------------------------#
+
+@app.route('/beeTracker')
+def beeTracker():
+
+	return render_template('beeTracker.html')
