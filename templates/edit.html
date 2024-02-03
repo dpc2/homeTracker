@@ -8,12 +8,10 @@
 
 <div class="editDiv">
 
-	<h3 class="edit">Edit <a href="{{ url_for('viewPics', plantName=plant['name']) }}">{{ plant['name'] }}</a></h3>
-
-
         {% if source == 'plantTracker' %}
                         {% set mySource = 'plantTracker' %}
 
+	        <h3 class="edit">Edit <a href="{{ url_for('viewPics', plantName=plant['name'], source='plantTracker') }}">{{ plant['name'] }}</a></h3>
 
 	        <form action="{{ url_for('wateredToday', plantName=plant['name'], source='plantTracker') }}" method="POST", class="edit">
          	       <input type="submit" value="Watered today" onclick="return confirm('Watered today?')">
@@ -23,6 +21,7 @@
         {% else %}
                         {% set mySource = 'gardenTracker' %}
 
+	        <h3 class="edit">Edit <a href="{{ url_for('viewPics', plantName=plant['name'], source='gardenTracker') }}">{{ plant['name'] }}</a></h3>
 
 	        <form action="{{ url_for('wateredToday', plantName=plant['name'], source='gardenTracker') }}" method="POST", class="edit">
                 	<input type="submit" value="Watered today" onclick="return confirm('Watered today?')">

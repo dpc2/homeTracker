@@ -144,9 +144,9 @@ def wateredToday(plantName, source):
 	elif source == "gardenTracker":
 		return redirect(url_for('gardenTracker'))
 
-@app.route('/<string:plantName>/viewPics/', methods=('GET',))
-def viewPics(plantName):
-	plant = get_plant(plantName)
+@app.route('/<string:plantName>:<string:source>/viewPics/', methods=('GET',))
+def viewPics(plantName, source):
+	plant = get_plant(plantName, source)
 
 	plantName = plantName.replace(' ','')
 	print(plantName)
