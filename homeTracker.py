@@ -30,9 +30,13 @@ def get_db_connection():
 	conn.row_factory = sqlite3.Row
 	return conn
 
-def get_plant(plantName):
+def get_plant(plantName, source):
 	conn = get_db_connection()
-	plant = conn.execute('SELECT * FROM plants WHERE name = ?', (plantName,)).fetchone()
+
+	if source == "plantTracker":
+		plant = conn.execute('SELECT * FROM plants WHERE name = ?', (plantName,)).fetchone()
+	elif source == "gardenTracker":
+		plant = conn.execute('SELECT * FROM garden WHERE name = ?', (plantName,)).fetchone()
 	conn.close()
 	#if plant is None:
 	#	abort(404)
@@ -114,23 +118,35 @@ def addNew():
 '/<string:devID>:<string:type>/delete/'
 
 
-@app.route('/<string:plantName>/wateredToday/', methods=('POST',))
-def wateredToday(plantName):
-	plant = get_plant(plantName)
+@app.route('/<string:plantName>:<string:source>/wateredToday/', methods=('POST',))
+def wateredToday(plantName, source):
+	thisPlant = get_plant(plantName, source)
 	conn = get_db_connection()
 	temp = dt.datetime.now()
+
+	print(thisPlant['dryOut'])
+	print(plantName)
+
 	today = temp.strftime('%Y-%m-%d')
-	conn.execute('UPDATE plants SET lastWatered = ? WHERE name = ?', (today, plantName))
-	conn.execute('UPDATE plants SET remaining = ? WHERE name = ?', (plant['dryOut'], plantName))
+
+	if source == "plantTracker":
+		conn.execute('UPDATE plants SET lastWatered = ? WHERE name = ?', (today, plantName))
+		conn.execute('UPDATE plants SET remaining = ? WHERE name = ?', (thisPlant['dryOut'], plantName))
+	elif source == "gardenTracker":
+                conn.execute('UPDATE garden SET lastWatered = ? WHERE name = ?', (today, plantName))
+                conn.execute('UPDATE garden SET remaining = ? WHERE name = ?', (thisPlant['dryOut'], plantName))
 	conn.commit()
 	conn.close()
 	#flash('"{}" was watered today!'.format(plant['name']))
-	return redirect(url_for('plantTracker'))
 
+	if source == "plantTracker":
+		return redirect(url_for('plantTracker'))
+	elif source == "gardenTracker":
+		return redirect(url_for('gardenTracker'))
 
-@app.route('/<string:plantName>/viewPics/', methods=('GET',))
-def viewPics(plantName):
-	plant = get_plant(plantName)
+@app.route('/<string:plantName>:<string:source>/viewPics/', methods=('GET',))
+def viewPics(plantName, source):
+	plant = get_plant(plantName, source)
 
 	plantName = plantName.replace(' ','')
 	print(plantName)
@@ -187,12 +203,7 @@ def pod():
 def edit(plantName, source):
 
 	print(source)
-
-	if source=="gardenTracker":
-		plant = get_garden(plantName)
-
-	else:
-		plant = get_plant(plantName)
+	plant = get_plant(plantName, source)
 
 	#print(plant)
 
@@ -263,11 +274,11 @@ def refreshDb(source):
 		return redirect(url_for('plantTracker'))
 	if source == 'gardenTracker':
 		return redirect(url_for('gardenTracker'))
-	
+
 
 @app.route('/<string:plantName>:<string:source>/delete/', methods=('POST',))
 def delete(plantName, source):
-	plant = get_plant(plantName)
+	plant = get_plant(plantName, source)
 	conn = get_db_connection()
 
 	print(plantName + "is getting deleted from " + source + "\n")
@@ -276,7 +287,7 @@ def delete(plantName, source):
 		conn.execute('DELETE FROM plants WHERE name = ?', (plantName,))
 	if source == 'gardenTracker':
 		conn.execute('DELETE FROM garden WHERE name = ?', (plantName,))
-	
+
 	conn.commit()
 	conn.close()
 

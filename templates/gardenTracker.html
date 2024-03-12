@@ -60,7 +60,7 @@
 					{{ plants['dryOut'] }}
 				</td>
                                 <td class="plantsList">
-					<a class="thirstyList" href="{{ url_for('viewPics', plantName=plants['name']) }}">
+					<a class="thirstyList" href="{{ url_for('viewPics', plantName=plants['name'], source='gardenTracker') }}">
 						Link
 					</a>
 				</td>
@@ -68,8 +68,6 @@
                 {% endfor %}
         </table>
 
-
 	<br>
-	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
 
 {% endblock %}
