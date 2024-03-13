@@ -24,6 +24,7 @@ a plant is watered, and past pictures can be viewed for each plant.
 - Add In Memorium page
 - Add Plant of the Day pics to daily emails
 - Fix refresh function to include garden tracker
+- Fix garden tracker picture upload redirect
 - Fix redirect after gardenTracker picture uploads
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
