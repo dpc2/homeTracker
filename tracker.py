@@ -15,7 +15,7 @@ temp = today.strftime('%Y-%m-%d')
 
 thirsty = 'Thirsty plant bbs:\n\n'
 email_list = "emailAddresses.txt"
-thirsty_boi = "/home/danny/scripts/homeTracker/static/thirstyBoy.png"
+thirsty_boi = "./static/thirstyBoy.png"
 
 
 # Step through plants table and recalculate remaining days
