@@ -1,8 +1,0 @@
-bin/
-include/
-lib/
-__pycache__/*
-*.pyc
-lib64
-share/
-*.cfg
