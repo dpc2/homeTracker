@@ -238,7 +238,7 @@ def edit(plantName, source):
 						(myName, myLastWatered, myDryOut, plantName))
 				except sqlite3.IntegrityError:
 					conn.close()
-					return redirect('/integrityError')				
+					return redirect('/integrityError')
 
 			conn.commit()
 			conn.close()
@@ -262,7 +262,12 @@ def edit(plantName, source):
 				print('Created folder!')
 
 			file.save(myDirectory + '/' + filename)
-			return redirect(url_for('plantTracker'))
+
+		        if source == "plantTracker":
+		                return redirect(url_for('plantTracker'))
+		        elif source == "gardenTracker":
+		                return redirect(url_for('gardenTracker'))
+
 	return render_template('edit.html', plant=plant, source=source)
 
 
