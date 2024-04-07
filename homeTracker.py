@@ -264,9 +264,11 @@ def edit(plantName, source):
 			file.save(myDirectory + '/' + filename)
 
 			if source == "plantTracker":
-				return redirect(url_for('plantTracker'))
+				#return redirect(url_for('plantTracker'))
+				return render_template('edit.html', plant=plant, source=source)
 			elif source == "gardenTracker":
-				return redirect(url_for('gardenTracker'))
+				#return redirect(url_for('gardenTracker'))
+				return render_template('edit.html', plant=plant, source=source)
 
 	return render_template('edit.html', plant=plant, source=source)
 
