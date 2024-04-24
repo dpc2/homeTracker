@@ -38,6 +38,29 @@ a.mainNav {
 
 }
 
+nav.gardenNav {
+        background-color: rgb(249, 251, 129);
+    background-image: url("gardenNavBar.jpg");
+    background-size: 10%;
+        border: solid;
+}
+
+a.gardenNav {
+        color: black;
+        font-size: 2em;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-decoration: none;
+        background-color: #98d58e;
+        padding: 10px 10px 10px 10px;   
+        border-radius: 20px;
+        border-style: solid;
+        margin: 22px 0px 22px 10px;
+}
+
 /* Plant Body */
 
 body.body {

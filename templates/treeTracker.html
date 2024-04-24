@@ -16,7 +16,7 @@
 
                         <tr style="background-color: {{ bg_color }}">
                                 <td class="thirstyList">
-					<a class="thirstyList" href="{{ url_for('edit', plantName=thirstyToday['name'], source='gardenTracker') }}">
+					<a class="thirstyList" href="{{ url_for('edit', plantName=thirstyToday['name'], source='plantTracker') }}">
 						{{ thirstyToday['name'] }}
 					</a>
 				</td>
@@ -25,10 +25,11 @@
 	</table>
 
 	<br>
-        <form action="{{ url_for('refreshDb', source='gardenTracker') }}">
+        <form action="{{ url_for('refreshDb', source='plantTracker') }}">
                 <input type="submit" value="Refresh" class="refresh">
         </form>
 
+	<br>
 	<br>
 
 	<p class="thirsty"><u>The rest of the gang:</u></p>
@@ -47,9 +48,7 @@
 			
 			<tr style="background-color: {{ bg_color }}">
                                 <td class="plantsList">
-					<a class="thirstyList" href="{{ url_for('edit', plantName=plants['name'], source='gardenTracker') }}">
-
-
+					<a class="thirstyList" href="{{ url_for('edit', plantName=plants['name'], source='plantTracker') }}">
 						{{ plants['name'] }}
 					</a>
 				</td>
@@ -60,7 +59,7 @@
 					{{ plants['dryOut'] }}
 				</td>
                                 <td class="plantsList">
-					<a class="thirstyList" href="{{ url_for('viewPics', plantName=plants['name'], source='gardenTracker') }}">
+					<a class="thirstyList" href="{{ url_for('viewPics', plantName=plants['name'], source='plantTracker') }}">
 						Link
 					</a>
 				</td>
@@ -68,6 +67,8 @@
                 {% endfor %}
         </table>
 
+
 	<br>
+	<a href="{{ url_for('addNew') }}" class="button">Add New</a>
 
 {% endblock %}
