@@ -69,15 +69,14 @@ body.body {
 	background-size: 100%;
 }
 
-
-p.thirsty {
-	margin: 20px 0px 10px 40px;
-	padding: 10px 10px 10px 10px;
-	font-size: 1.25em;
-	background-color: rgb(123, 190, 124);
-	display: inline-block;
-	border: dotted;
-	border-radius: 15px;
+.sectionHead {
+        margin: 20px 0px 10px 40px;
+        padding: 10px 10px 10px 10px;
+        font-size: 1.25em;
+        background-color: rgb(123, 190, 124);
+        display: inline-block;
+        border: dotted;
+        border-radius: 15px;
 }
 
 /* Edit Page */

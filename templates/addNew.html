@@ -3,7 +3,7 @@
 
 {% block content %}
 	<!-- Set heading as a title -->
-	<h3>{% block title %}Add a new plant{% endblock %}</h3>
+	<h3 class="sectionHead">{% block title %}Add a new plant{% endblock %}</h3>
 
 	<!-- Use a <form> tag with the attribute "method" to to "post"
 	to indicate a POST request -->
@@ -21,6 +21,19 @@
 			value="{{ request.form['name'] }}"></input>
 		<br>
 
+		<!-- <br>
+		<button type="button" name="type"
+			placeholder="House Plant">House Plant</button>
+		<br> -->
+
+		<br>
+                <select id="mySelect" name="type">
+			<option value="bonsai">Bonsai</option>
+                        <option value="housePlant">House Plant</option>
+                        <option value="garden">Garden Plant</option>
+                </select>
+		<br>
+
 		<br>
 		<label for="lastWatered">Last Watered Date:</label>
 		<br>
@@ -28,6 +41,7 @@
 			placeholder="YYYY-MM-DD"
 			value="{{ request.form['lastWatered'] }}"></input>
 		<br>
+
 
 		<br>
 		<label for="dryOut">Dry Out Duration:</label>

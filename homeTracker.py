@@ -98,6 +98,9 @@ def addNew():
 		name = request.form['name']
 		lastWatered = request.form['lastWatered']
 		dryOut = request.form['dryOut']
+		type = request.form['type']
+
+		print(name + " " + type)
 
 		if not name:
 			flash('Name is required!')
@@ -107,15 +110,15 @@ def addNew():
 			flash('Dry out duration is required!')
 		else:
 			conn = get_db_connection()
-			conn.execute('INSERT INTO plants (name, lastWatered, dryOut) VALUES (?, ?, ?)',
-				(name, lastWatered, dryOut))
+			conn.execute('INSERT INTO plants (name, lastWatered, dryOut, type) VALUES (?, ?, ?, ?)',
+				(name, lastWatered, dryOut, type))
 			conn.commit()
 			conn.close()
 			return redirect(url_for('plantTracker'))
 
 	return render_template('addNew.html')
 
-'/<string:devID>:<string:type>/delete/'
+#'/<string:devID>:<string:type>/delete/'
 
 
 @app.route('/<string:plantName>:<string:source>/wateredToday/', methods=('POST',))
