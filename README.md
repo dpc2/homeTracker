@@ -13,6 +13,7 @@ a plant is watered, and past pictures can be viewed for each plant.
 <u>Future features:</u>
 - Incorporate Javascript to update the frontend
 - Add a Rename Plant button that will take care of backend folder management
+- Adjust Days Until Thirsty automatically if watered before counter is up
 - Request photo when selecting Watered Today
 - Plant profile pics displayed on front page
 - Add a "Repot me!" feature
