@@ -33,7 +33,7 @@ def get_db_connection():
 def get_plant(plantName, source):
 	conn = get_db_connection()
 
-	if source == "plantTracker":
+	if source == "plantTracker" or source == "treeTracker":
 		plant = conn.execute('SELECT * FROM plants WHERE name = ?', (plantName,)).fetchone()
 	elif source == "gardenTracker":
 		plant = conn.execute('SELECT * FROM garden WHERE name = ?', (plantName,)).fetchone()
@@ -143,6 +143,8 @@ def wateredToday(plantName, source):
 		return redirect(url_for('plantTracker'))
 	elif source == "gardenTracker":
 		return redirect(url_for('gardenTracker'))
+	elif source == "treeTracker":
+		return redirect(url_for('treeTracker'))
 
 @app.route('/<string:plantName>:<string:source>/viewPics/', methods=('GET',))
 def viewPics(plantName, source):
@@ -225,7 +227,7 @@ def edit(plantName, source):
 		else:
 			conn = get_db_connection()
 
-			if source == "plantTracker":
+			if source == "plantTracker" or source == "treeTracker":
 				try:
 					conn.execute('UPDATE plants SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
 						(myName, myLastWatered, myDryOut, plantName))
@@ -233,7 +235,7 @@ def edit(plantName, source):
 					conn.close()
 					return redirect('/integrityError')
 			elif source == "gardenTracker":
-				try:	
+				try:
 					conn.execute('UPDATE garden SET name = ?, lastWatered = ?, dryOut = ? WHERE name = ?',
 						(myName, myLastWatered, myDryOut, plantName))
 				except sqlite3.IntegrityError:
@@ -263,12 +265,12 @@ def edit(plantName, source):
 
 			file.save(myDirectory + '/' + filename)
 
-			if source == "plantTracker":
+			#if source == "plantTracker":
 				#return redirect(url_for('plantTracker'))
-				return render_template('edit.html', plant=plant, source=source)
-			elif source == "gardenTracker":
+			#	return render_template('edit.html', plant=plant, source=source)
+			#elif source == "gardenTracker":
 				#return redirect(url_for('gardenTracker'))
-				return render_template('edit.html', plant=plant, source=source)
+			return render_template('edit.html', plant=plant, source=source)
 
 	return render_template('edit.html', plant=plant, source=source)
 
@@ -288,9 +290,9 @@ def delete(plantName, source):
 	plant = get_plant(plantName, source)
 	conn = get_db_connection()
 
-	print(plantName + "is getting deleted from " + source + "\n")
+	print(plantName + " is getting deleted from " + source + "\n")
 
-	if source == 'plantTracker':
+	if source == 'plantTracker' or source == "treeTracker":
 		conn.execute('DELETE FROM plants WHERE name = ?', (plantName,))
 	if source == 'gardenTracker':
 		conn.execute('DELETE FROM garden WHERE name = ?', (plantName,))

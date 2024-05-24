@@ -26,6 +26,7 @@ a plant is watered, and past pictures can be viewed for each plant.
 - Fix refresh function to include garden tracker
 - Fix garden tracker picture upload redirect
 - Fix redirect after gardenTracker picture uploads
+- Fix renaming from edit page
 - <s>Link to photo gallery from individual plant pages</s>
 - <s>Photo viewing pages for each individual plant, generated from template</s>
 - <s>Reassess dates after changing Dry Out time - Refesh button</s>

@@ -16,7 +16,7 @@
 
                         <tr style="background-color: {{ bg_color }}">
                                 <td class="thirstyList">
-					<a class="thirstyList" href="{{ url_for('edit', plantName=thirstyToday['name'], source='plantTracker') }}">
+					<a class="thirstyList" href="{{ url_for('edit', plantName=thirstyToday['name'], source='treeTracker') }}">
 						{{ thirstyToday['name'] }}
 					</a>
 				</td>
@@ -48,7 +48,7 @@
 			
 			<tr style="background-color: {{ bg_color }}">
                                 <td class="plantsList">
-					<a class="thirstyList" href="{{ url_for('edit', plantName=plants['name'], source='plantTracker') }}">
+					<a class="thirstyList" href="{{ url_for('edit', plantName=plants['name'], source='treeTracker') }}">
 						{{ plants['name'] }}
 					</a>
 				</td>

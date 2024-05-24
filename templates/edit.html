@@ -17,8 +17,7 @@
          	       <input type="submit" value="Watered today" onclick="return confirm('Watered today?')">
 		</form>
 
-
-        {% else %}
+        {% elif source == 'gardenTracker' %}
                         {% set mySource = 'gardenTracker' %}
 
 	        <h3 class="edit">Edit <a href="{{ url_for('viewPics', plantName=plant['name'], source='gardenTracker') }}">{{ plant['name'] }}</a></h3>
@@ -26,6 +25,15 @@
 	        <form action="{{ url_for('wateredToday', plantName=plant['name'], source='gardenTracker') }}" method="POST", class="edit">
                 	<input type="submit" value="Watered today" onclick="return confirm('Watered today?')">
 		</form>
+	{% else %}
+                        {% set mySource = 'treeTracker' %}
+
+                <h3 class="edit">Edit <a href="{{ url_for('viewPics', plantName=plant['name'], source='treeTracker') }}">{{ plant['name'] }}</a></h3>
+
+                <form action="{{ url_for('wateredToday', plantName=plant['name'], source='treeTracker') }}" method="POST", class="edit">
+                        <input type="submit" value="Watered today" onclick="return confirm('Watered today?')">
+		</form>
+
         {% endif %}
 
 
@@ -68,7 +76,7 @@
 <div class="editDiv">
 	<h3>To delete this entry, click the button below</h3>
 
-	{% if source == 'plantTracker' %}
+	{% if source == 'plantTracker' or source == 'treeTracker' %}
 			{% set mySource = 'plantTracker' %}
 
 			<form action="{{ url_for('delete', plantName=plant['name'], source='plantTracker') }}" method="POST", class="edit">
