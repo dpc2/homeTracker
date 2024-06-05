@@ -286,6 +286,8 @@ def refreshDb(source):
 		return redirect(url_for('plantTracker'))
 	if source == 'gardenTracker':
 		return redirect(url_for('gardenTracker'))
+	if source == "treeTracker":
+		return redirect(url_for('treeTracker'))
 
 
 @app.route('/<string:plantName>:<string:source>/delete/', methods=('POST',))
