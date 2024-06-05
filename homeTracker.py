@@ -129,10 +129,11 @@ def wateredToday(plantName, source):
 
 	print(thisPlant['dryOut'])
 	print(plantName)
+	print(source)
 
 	today = temp.strftime('%Y-%m-%d')
 
-	if source == "plantTracker":
+	if source == "plantTracker" or source == "treeTracker":
 		conn.execute('UPDATE plants SET lastWatered = ? WHERE name = ?', (today, plantName))
 		conn.execute('UPDATE plants SET remaining = ? WHERE name = ?', (thisPlant['dryOut'], plantName))
 	elif source == "gardenTracker":
